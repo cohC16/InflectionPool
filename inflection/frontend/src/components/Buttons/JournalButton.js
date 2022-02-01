@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class JournalButton extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return <p>JournalButton component</p>;
-  }
-}
+const JournalButton = ({ setCurrentPage }) => {
+  const setPage = (newPage) => {
+    setCurrentPage(2);
+  };
+  return (
+    <div>
+      <p>JournalButton component</p>
+      <button onClick={setPage}>Introspect</button>
+    </div>
+  );
+};
+
+export default JournalButton;

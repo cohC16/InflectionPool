@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class InteractionButton extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return <p>InteractionButton component</p>;
-  }
-}
+const InteractionButton = ({ setCurrentPage }) => {
+  const setPage = (newPage) => {
+    setCurrentPage(3);
+  };
+  return (
+    <div>
+      <p>InteractionButton component</p>
+      <button onClick={setPage}>Reflect</button>
+    </div>
+  );
+};
+
+export default InteractionButton;

@@ -17,22 +17,32 @@ import BackButton from "./Buttons/BackButton";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [userInfo, setUserInfo] = useState(["username1", "password1"]);
+  const [username, setUsername] = useState("");
+  const [userpass, setUserpass] = useState("");
+
   const pageComponents = [
     <div>
-      <Login setCurrentPage={setCurrentPage} />
+      <Login
+        setCurrentPage={setCurrentPage}
+        setUsername={setUsername}
+        setUserpass={setUserpass}
+      />
     </div>,
     <div>
-      <Home />
+      <Home
+        setCurrentPage={setCurrentPage}
+        username={username}
+        userpass={userpass}
+      />
     </div>,
     <div>
-      <Journal />
+      <Journal setCurrentPage={setCurrentPage} />
     </div>,
     <div>
-      <Interaction />
+      <Interaction setCurrentPage={setCurrentPage} />
     </div>,
     <div>
-      <Visualization />
+      <Visualization setCurrentPage={setCurrentPage} />
     </div>,
   ];
   return pageComponents[currentPage];

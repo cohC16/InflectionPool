@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class VisualizationButton extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return <p>VisualizationButton component</p>;
-  }
-}
+const VisualizationButton = ({ setCurrentPage }) => {
+  const setPage = (newPage) => {
+    setCurrentPage(3);
+  };
+  return (
+    <div>
+      <p>VisualizationButton component</p>
+      <button onClick={setPage}>Circumspect</button>
+    </div>
+  );
+};
+
+export default VisualizationButton;

@@ -39,10 +39,10 @@ export default class Visualization extends Component {
             <EmotionContainer />
           </li>
           <li>
-            <BackButton />
+            <BackButton setCurrentPage={setCurrentPage} />
           </li>
           <li>
-            <HomeButton />
+            <HomeButton setCurrentPage={setCurrentPage} />
           </li>
         </ul>
       </div>
