@@ -79,10 +79,34 @@ WSGI_APPLICATION = 'inflection.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'Inflection',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': os.getenv('URI'),
+            # 'port': port_number,
+            'username': os.getenv('USERNAME'),
+            'password': os.getenv('PASSWORD'),
+            'authSource': 'Inflection',
+            'authMechanism': 'SCRAM-SHA-1'
+        },
+        'LOGGING': {
+            'version': 1,
+            'loggers': {
+                'djongo': {
+                    'level': 'DEBUG',
+                    'propagate': False,                        
+                }
+            },
+            },
     }
 }
 """
