@@ -1,5 +1,10 @@
+from .serializers import InflectionUserSerializer
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
-def main(request):
-    return HttpResponse("<h1>It's wild up in this django</h1>")
+from rest_framework import generics
+
+from .models import InflectionUser
+
+class InflectionUserView(generics.ListAPIView):
+    queryset = InflectionUser.objects.all()
+    serializer_class = InflectionUserSerializer
+

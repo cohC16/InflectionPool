@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import main
+from .views import InflectionUserView
 
 urlpatterns = [
-    path('', main)
+    path('users', InflectionUserView.as_view())
 ]
