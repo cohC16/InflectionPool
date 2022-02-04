@@ -5,9 +5,7 @@ import Journal from "./Journal/Journal";
 import Login from "./Login/Login";
 import Interaction from "./Interaction/Interaction";
 import Visualization from "./Visualization/Visualization";
-import HomeButton from "./Buttons/HomeButton";
-import SubmitButton from "./Buttons/SubmitButton";
-import BackButton from "./Buttons/BackButton";
+
 // export default class App extends Component {
 //   constructor(props) {
 //     super(props);
