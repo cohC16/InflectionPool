@@ -2,7 +2,7 @@ import React from "react";
 
 const JournalButton = ({ setCurrentPage }) => {
   const setPage = (newPage) => {
-    setCurrentPage(2);
+    setCurrentPage(3);
   };
   return (
     <div>

@@ -25,6 +25,12 @@ class CreateInflectionUserView(APIView):
         if not self.request.session.exists(self.request.session.session_key):
             self.request.session.create()
         serializer =  self.serializer_class(data=request.data)
+        # if True:
+        #     userid = request.data.get('userid')
+        #     username = request.data.get('username')
+        #     nickname = request.data.get('nickname')
+        #     email = request.data.get('email')
+        #     password = request.data.get('password')
         if serializer.is_valid():
             userid = serializer.data.get('userid')
             username = serializer.data.get('username')

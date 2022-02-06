@@ -5,6 +5,8 @@ const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
   const [formField, setFormField] = useState({
     username: "",
     password: "",
+    nickname: "",
+    email: "",
   });
 
   const onPasswordChange = (event) => {
@@ -19,23 +21,35 @@ const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
       username: event.target.value,
     });
   };
+  const onNicknameChange = (event) => {
+    setFormField({
+      ...formField,
+      nickname: event.target.value,
+    });
+  };
+  const onEmailChange = (event) => {
+    setFormField({
+      ...formField,
+      email: event.target.value,
+    });
+  };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
 
     props.setUsername(formField.username);
     props.setUserpass(formField.password);
+    props.setNickname(formField.nickname);
+    props.setEmail(formField.email);
   };
   const setPage = () => {
     console.log(formField.username);
     setUsername(formField.username);
     setUserpass(formField.password);
+    setNickname(formField.nickname);
+    setEmail(formField.email);
     setCurrentPage(2);
   };
-  const setPage2 = () => {
-    setCurrentPage(1);
-  };
-
   return (
     <div>
       <p>Login component</p>
@@ -55,9 +69,20 @@ const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
             value={formField.password}
             onChange={onPasswordChange}
           />
+          <input
+            name="Nickname"
+            value={formField.nickname}
+            onChange={onNicknameChange}
+          />
+          <input
+            name="Email"
+            value={formField.username}
+            onChange={onEmailChange}
+          />
         </li>
-        <button onClick={setPage}>Login</button>
-        <button onClick={setPage2}>Create User</button>
+        <li>
+          <button onClick={setPage}>Login</button>
+        </li>
       </ul>
     </div>
   );

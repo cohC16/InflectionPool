@@ -2,7 +2,7 @@ import React from "react";
 
 const InteractionButton = ({ setCurrentPage }) => {
   const setPage = (newPage) => {
-    setCurrentPage(3);
+    setCurrentPage(4);
   };
   return (
     <div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const BackButton = ({ setCurrentPage }) => {
   const setPage = (newPage) => {
-    setCurrentPage(1);
+    setCurrentPage(2);
   };
   return (
     <div>

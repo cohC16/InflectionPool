@@ -2,7 +2,7 @@ import React from "react";
 
 const VisualizationButton = ({ setCurrentPage }) => {
   const setPage = (newPage) => {
-    setCurrentPage(3);
+    setCurrentPage(5);
   };
   return (
     <div>
