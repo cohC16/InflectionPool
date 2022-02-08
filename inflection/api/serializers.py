@@ -1,15 +1,25 @@
 from rest_framework import serializers
-from .models import InflectionUser
+from .models import InflectionUser, JournalEntry
 
 class InflectionUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = InflectionUser 
-        fields = ('userid','username','password','nickname','email','created_at')
+        fields = ('_id','username','password','nickname','email','created_at')
+
+class EntrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JournalEntry 
+        fields = ('_id','entry', 'userid', 'entryname', 'username', 'created_at', 'emotion1', 'emotionvalue1', 'emotion2', 'emotionvalue2', 'emotion3', 'emotionvalue3')
 
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = InflectionUser
-        fields = ('userid','username','password','nickname','email')
+        fields = ('_id','username','password','nickname','email')
+
+class CreateEntrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JournalEntry
+        fields = ('_id', 'entry','userid', 'entryname', 'username', 'created_at', 'emotion1', 'emotionvalue1', 'emotion2', 'emotionvalue2', 'emotion3', 'emotionvalue3')
  
 
 """

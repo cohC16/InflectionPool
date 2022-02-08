@@ -1,7 +1,14 @@
 import ExternalAuth from "./ExternalAuth";
 import React, { useState } from "react";
 
-const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
+const CreateUser = ({
+  setCurrentPage,
+  setUsername,
+  setUserpass,
+  setNickname,
+  setEmail,
+  set_id,
+}) => {
   const [formField, setFormField] = useState({
     username: "",
     password: "",
@@ -15,6 +22,10 @@ const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
       password: event.target.value,
     });
   };
+  const id_setter = (id) => {
+    set_id(id);
+  };
+
   const onUsernameChange = (event) => {
     setFormField({
       ...formField,
@@ -36,11 +47,32 @@ const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: formField.username,
+        password: formField.password,
+        nickname: formField.nickname,
+        email: formField.email,
+      }),
+    };
+    console.log(
+      formField.username,
+      formField.password,
+      formField.nickname,
+      formField.email
+    );
+    setUsername(formField.username);
+    setUserpass(formField.password);
+    setNickname(formField.nickname);
+    setEmail(formField.email);
+    fetch("/api/users/create", requestOptions).then((response) =>
+      response.json().then((data) => id_setter(data._id))
+    );
 
-    props.setUsername(formField.username);
-    props.setUserpass(formField.password);
-    props.setNickname(formField.nickname);
-    props.setEmail(formField.email);
+    // .then(set_id(response["_id"]));
+    setCurrentPage(2);
   };
   const setPage = () => {
     console.log(formField.username);
@@ -52,39 +84,57 @@ const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
   };
   return (
     <div>
-      <p>Login component</p>
-      <ul>
-        <li>
-          <ExternalAuth />
-        </li>
-        <li>
+      <p>Create New User Account</p>
+      <form className="" onSubmit={onFormSubmit}>
+        <p>
+          <label>Username </label>
           <input
             name="Username"
+            required={true}
             value={formField.username}
             onChange={onUsernameChange}
+            maxLength={20}
+            // helperText="Username go brrr"
           />
+        </p>
+        <p>
+          <label>Password </label>
           <input
             type="password"
+            required={true}
             name="Password"
             value={formField.password}
             onChange={onPasswordChange}
+            maxLength={22}
+            // helperText="Password go psssspsps"
           />
+        </p>
+        <p>
+          <label>Nickname </label>
           <input
             name="Nickname"
+            required={true}
             value={formField.nickname}
             onChange={onNicknameChange}
+            maxLength={20}
+            // helperText="Yeah, we're there."
           />
+        </p>
+        <p>
+          <label>Email </label>
           <input
             name="Email"
-            value={formField.username}
+            value={formField.email}
             onChange={onEmailChange}
+            required={true}
+            maxLength={250}
+            // helperText="Real email for real human."
           />
-        </li>
-        <li>
-          <button onClick={setPage}>Login</button>
-        </li>
-      </ul>
+        </p>
+        <input type="submit" value="Create Profile" />
+      </form>
     </div>
   );
 };
-export default Login;
+
+export default CreateUser;

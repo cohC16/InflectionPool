@@ -38,7 +38,7 @@ const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
 
   return (
     <div>
-      <p>Login component</p>
+      <p>Login Component</p>
       <ul>
         <li>
           <ExternalAuth />
@@ -49,6 +49,8 @@ const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
             value={formField.username}
             onChange={onUsernameChange}
           />
+        </li>
+        <li>
           <input
             type="password"
             name="Password"
@@ -56,8 +58,12 @@ const Login = ({ setCurrentPage, setUsername, setUserpass }) => {
             onChange={onPasswordChange}
           />
         </li>
-        <button onClick={setPage}>Login</button>
-        <button onClick={setPage2}>Create User</button>
+        <li>
+          <button onClick={setPage}>Login</button>
+        </li>
+        <li>
+          <button onClick={setPage2}>Create User</button>
+        </li>
       </ul>
     </div>
   );

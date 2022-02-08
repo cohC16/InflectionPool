@@ -5,6 +5,7 @@ import Journal from "./Journal/Journal";
 import Login from "./Login/Login";
 import Interaction from "./Interaction/Interaction";
 import Visualization from "./Visualization/Visualization";
+import CreateUser from "./CreateUser/CreateUser";
 
 // export default class App extends Component {
 //   constructor(props) {
@@ -16,7 +17,10 @@ import Visualization from "./Visualization/Visualization";
 const App = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [username, setUsername] = useState("");
+  const [_id, set_id] = useState("");
   const [userpass, setUserpass] = useState("");
+  const [email, setEmail] = useState("");
+  const [nickname, setNickname] = useState("");
 
   const pageComponents = [
     <div>
@@ -27,14 +31,34 @@ const App = () => {
       />
     </div>,
     <div>
+      <CreateUser
+        setCurrentPage={setCurrentPage}
+        setUsername={setUsername}
+        setNickname={setNickname}
+        setEmail={setEmail}
+        setUserpass={setUserpass}
+        set_id={set_id}
+      />
+    </div>,
+    <div>
       <Home
         setCurrentPage={setCurrentPage}
         username={username}
         userpass={userpass}
+        nickname={nickname}
+        email={email}
+        _id={_id}
       />
     </div>,
     <div>
-      <Journal setCurrentPage={setCurrentPage} />
+      <Journal
+        setCurrentPage={setCurrentPage}
+        username={username}
+        userpass={userpass}
+        nickname={nickname}
+        email={email}
+        _id={_id}
+      />
     </div>,
     <div>
       <Interaction setCurrentPage={setCurrentPage} />

@@ -8,44 +8,44 @@ import EmotionSelector from "./EmotionSelector";
 import Linegraph from "./Linegraph";
 import ToggleHide from "./ToggleHide";
 
-export default class Visualization extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div>
-        <p>Visualization component</p>
-        <ul>
-          <li>
-            <SortByButton />
-          </li>
-          <li>
-            <DurationButton />
-          </li>
-          <li>
-            <Linegraph />
-          </li>
-          <li>
-            <EmotionContainer />
-          </li>
-          <li>
-            <EmotionContainer />
-          </li>
-          <li>
-            <EmotionContainer />
-          </li>
-          <li>
-            <EmotionContainer />
-          </li>
-          <li>
-            <BackButton setCurrentPage={setCurrentPage} />
-          </li>
-          <li>
-            <HomeButton setCurrentPage={setCurrentPage} />
-          </li>
-        </ul>
-      </div>
-    );
-  }
-}
+const Visualization = ({ setCurrentPage }) => {
+  const setPage = (newPage) => {
+    setCurrentPage(1);
+  };
+  return (
+    <div>
+      <p>Visualization component</p>
+      <ul>
+        <li>
+          <SortByButton />
+        </li>
+        <li>
+          <DurationButton />
+        </li>
+        <li>
+          <Linegraph />
+        </li>
+        <li>
+          <EmotionContainer />
+        </li>
+        <li>
+          <EmotionContainer />
+        </li>
+        <li>
+          <EmotionContainer />
+        </li>
+        <li>
+          <EmotionContainer />
+        </li>
+        <li>
+          <BackButton setCurrentPage={setCurrentPage} />
+        </li>
+        <li>
+          <HomeButton setCurrentPage={setCurrentPage} />
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default Visualization;
