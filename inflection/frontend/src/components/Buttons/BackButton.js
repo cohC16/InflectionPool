@@ -6,7 +6,6 @@ const BackButton = ({ setCurrentPage }) => {
   };
   return (
     <div>
-      <p>BackButton component</p>
       <button onClick={setPage}>Back</button>
     </div>
   );

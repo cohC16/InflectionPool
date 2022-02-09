@@ -1,19 +1,42 @@
 from os import stat
-from .serializers import EntrySerializer, InflectionUserSerializer, CreateUserSerializer, CreateEntrySerializer
+from .serializers import EntrySerializer, InflectionUserSerializer, CreateUserSerializer, CreateEntrySerializer, UserLookupSerializer
 from .models import InflectionUser, JournalEntry
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response 
+from rest_framework.request import Request
 
 
 class InflectionUserView(generics.ListAPIView):
     queryset = InflectionUser.objects.all()
     serializer_class = InflectionUserSerializer
 
+class InflectionUserLookup(APIView):
+    serializer_class = UserLookupSerializer
+
+    def post(self, request, format=None):
+        serializer =  self.serializer_class(data=request.data)
+        userinput =  request.GET.get('username')
+        userpassword =  request.GET.get('password')
+        if serializer.is_valid():
+            username = serializer.data.get('username')
+            password = serializer.data.get('password')
+            query = InflectionUser.objects.filter(username=username, password=password).last()
+            if not query:
+                return (Response({"Message":"Incorrect Username/Password"}, status=status.HTTP_400_BAD_REQUEST))
+            else:
+                return (Response({"_id":query._id}, status=status.HTTP_202_ACCEPTED))
+
+        return (Response({"Message":"Invalid serializer"}, status=status.HTTP_400_BAD_REQUEST))
+
+
+
 class EntryView(generics.ListAPIView):
     queryset = JournalEntry.objects.all()
     serializer_class = EntrySerializer
+
+
  
 class CreateInflectionUserView(APIView):
     serializer_class = CreateUserSerializer
@@ -37,7 +60,6 @@ class CreateInflectionUserView(APIView):
             if queryset.exists():
                 inflectionUser = queryset[0]
                 return (Response({"Message":"username already exists"}, status=status.HTTP_400_BAD_REQUEST))
-                pass
             else:
                 inflectionUser = InflectionUser(_id=_id, username=username, nickname=nickname, email=email, password=password)
                 inflectionUser.save()

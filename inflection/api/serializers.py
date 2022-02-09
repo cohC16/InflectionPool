@@ -6,6 +6,10 @@ class InflectionUserSerializer(serializers.ModelSerializer):
         model = InflectionUser 
         fields = ('_id','username','password','nickname','email','created_at')
 
+class UserLookupSerializer(serializers.Serializer):
+    username = serializers.CharField(max_length=22)
+    password = serializers.CharField(max_length=22)
+
 class EntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalEntry 

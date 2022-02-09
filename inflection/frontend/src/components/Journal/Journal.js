@@ -204,14 +204,7 @@ const Journal = ({ setCurrentPage, username, _id }) => {
           <input type="submit" value="Submit Entry" />
         </form>
       </div>
-      <ul>
-        <li>
-          <BackButton setCurrentPage={setCurrentPage} />
-        </li>
-        <li>
-          <SubmitButton setCurrentPage={setCurrentPage} />
-        </li>
-      </ul>
+      <BackButton setCurrentPage={setCurrentPage} />
     </div>
   );
 };

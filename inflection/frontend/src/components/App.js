@@ -28,6 +28,8 @@ const App = () => {
         setCurrentPage={setCurrentPage}
         setUsername={setUsername}
         setUserpass={setUserpass}
+        set_id={set_id}
+        _id={_id}
       />
     </div>,
     <div>
