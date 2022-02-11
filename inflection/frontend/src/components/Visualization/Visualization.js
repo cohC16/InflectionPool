@@ -9,9 +9,6 @@ import Linegraph from "./Linegraph";
 import ToggleHide from "./ToggleHide";
 
 const Visualization = ({ setCurrentPage }) => {
-  const setPage = (newPage) => {
-    setCurrentPage(1);
-  };
   return (
     <div>
       <p>Visualization component</p>
@@ -23,7 +20,7 @@ const Visualization = ({ setCurrentPage }) => {
           <DurationButton />
         </li>
         <li>
-          <Linegraph />
+          <Linegraph data="data" />
         </li>
         <li>
           <EmotionContainer />

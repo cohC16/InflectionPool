@@ -16,9 +16,19 @@ const Login = ({
 
   const [hasSubmitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  
   useEffect(() => {
     let mounted = true;
+    if (mounted) {
+      hooksAbstracted();
+    }
+    return function cleanup() {
+      mounted = false;
+      console.log("unmounted login");
+    };
+  }, [_id]);
+
+  const hooksAbstracted = () => {
     if (hasSubmitted) {
       if (_id) {
         setCurrentPage(2);
@@ -26,11 +36,7 @@ const Login = ({
         setErrorMessage("Invalid Login Credentials");
       }
     }
-    return function cleanup() {
-      mounted = false;
-      console.log("unmounted login");
-    };
-  }, [_id]);
+  };
 
   const onPasswordChange = (event) => {
     setFormField({
