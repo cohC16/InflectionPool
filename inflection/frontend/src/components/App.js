@@ -17,7 +17,7 @@ import CreateUser from "./CreateUser/CreateUser";
 const App = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [username, setUsername] = useState("");
-  const [_id, set_id] = useState("");
+  const [_id, set_id] = useState({ _id: "", nickname: "" });
   const [userpass, setUserpass] = useState("");
   const [email, setEmail] = useState("");
   const [nickname, setNickname] = useState("");
@@ -29,6 +29,7 @@ const App = () => {
         setUsername={setUsername}
         setUserpass={setUserpass}
         set_id={set_id}
+        setNickname={setNickname}
         _id={_id}
       />
     </div>,
@@ -47,23 +48,28 @@ const App = () => {
         setCurrentPage={setCurrentPage}
         username={username}
         userpass={userpass}
-        nickname={nickname}
+        nickname={_id.nickname}
         email={email}
-        _id={_id}
+        _id={_id._id}
       />
     </div>,
     <div>
       <Journal
         setCurrentPage={setCurrentPage}
         username={username}
-        userpass={userpass}
         nickname={nickname}
         email={email}
         _id={_id}
       />
     </div>,
     <div>
-      <Interaction setCurrentPage={setCurrentPage} />
+      <Interaction
+        setCurrentPage={setCurrentPage}
+        username={username}
+        nickname={nickname}
+        email={email}
+        _id={_id}
+      />
     </div>,
     <div>
       <Visualization setCurrentPage={setCurrentPage} />

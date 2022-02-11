@@ -22,8 +22,8 @@ const CreateUser = ({
       password: event.target.value,
     });
   };
-  const id_setter = (id) => {
-    set_id(id);
+  const id_setter = (data) => {
+    set_id({ _id: data._id, nickname: data.nickname });
   };
 
   const onUsernameChange = (event) => {
@@ -68,7 +68,9 @@ const CreateUser = ({
     setNickname(formField.nickname);
     setEmail(formField.email);
     fetch("/api/users/create", requestOptions).then((response) =>
-      response.json().then((data) => id_setter(data._id))
+      response
+        .json()
+        .then((data) => id_setter({ _id: data._id, nickname: data.nickname }))
     );
 
     // .then(set_id(response["_id"]));

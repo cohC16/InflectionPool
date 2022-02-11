@@ -1,7 +1,14 @@
 import ExternalAuth from "./ExternalAuth";
 import React, { useEffect, useState } from "react";
 
-const Login = ({ setCurrentPage, setUsername, setUserpass, set_id, _id }) => {
+const Login = ({
+  setCurrentPage,
+  setUsername,
+  setUserpass,
+  set_id,
+  _id,
+  setNickname,
+}) => {
   const [formField, setFormField] = useState({
     username: "",
     password: "",
@@ -11,7 +18,7 @@ const Login = ({ setCurrentPage, setUsername, setUserpass, set_id, _id }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    console.log(_id);
+    let mounted = true;
     if (hasSubmitted) {
       if (_id) {
         setCurrentPage(2);
@@ -19,6 +26,10 @@ const Login = ({ setCurrentPage, setUsername, setUserpass, set_id, _id }) => {
         setErrorMessage("Invalid Login Credentials");
       }
     }
+    return function cleanup() {
+      mounted = false;
+      console.log("unmounted login");
+    };
   }, [_id]);
 
   const onPasswordChange = (event) => {
@@ -54,7 +65,7 @@ const Login = ({ setCurrentPage, setUsername, setUserpass, set_id, _id }) => {
     setUsername(formField.username);
     fetch("/api/user", requestOptions)
       .then((response) => response.json())
-      .then((data) => set_id(data._id));
+      .then((data) => set_id({ _id: data._id, nickname: data.nickname }));
   };
 
   const setPage = () => {

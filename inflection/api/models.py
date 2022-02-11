@@ -34,12 +34,12 @@ class JournalEntry(models.Model):
     entry = models.TextField()
     username = models.CharField(max_length=20)
     created_at = models.DateField(auto_now_add=True)
-    emotion1 = models.CharField(max_length=20)
-    emotion2 = models.CharField(max_length=20)
-    emotion3 = models.CharField(max_length=20)
-    emotionvalue1 = models.IntegerField()
-    emotionvalue2 = models.IntegerField()
-    emotionvalue3 = models.IntegerField()
+    emotion1 = models.CharField(max_length=20, blank=True, default='')
+    emotion2 = models.CharField(max_length=20, blank=True, default='')
+    emotion3 = models.CharField(max_length=20, blank=True, default='')
+    emotionvalue1 = models.IntegerField(blank=True,null=True)
+    emotionvalue2 = models.IntegerField(blank=True,null=True)
+    emotionvalue3 = models.IntegerField(blank=True,null=True)
 
     
 # id, userid (fk), date, body, tag1, tag2, tag3, tag1val, tag2val, tag3val

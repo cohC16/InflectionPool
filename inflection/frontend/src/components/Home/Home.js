@@ -24,14 +24,14 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 //     super(props);
 //   }
 //   render() {
-const Home = ({ setCurrentPage, username, _id }) => {
+const Home = ({ setCurrentPage, username, _id, nickname }) => {
   const setPage = (newPage) => {
     setCurrentPage(1);
   };
   return (
     <div>
-      <p>Homepage component {_id}</p>
-      <p>Welcome {username}</p>
+      <p>Homepage</p>
+      <p>Welcome {nickname}</p>
       <ul>
         <li>
           <JournalButton setCurrentPage={setCurrentPage} />

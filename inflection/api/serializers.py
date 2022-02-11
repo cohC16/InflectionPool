@@ -10,10 +10,15 @@ class UserLookupSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=22)
     password = serializers.CharField(max_length=22)
 
+class EntryViewbyUserSerializer(serializers.Serializer):
+    username = serializers.CharField(max_length=22)
+    _id = serializers.IntegerField()
+
 class EntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalEntry 
         fields = ('_id','entry', 'userid', 'entryname', 'username', 'created_at', 'emotion1', 'emotionvalue1', 'emotion2', 'emotionvalue2', 'emotion3', 'emotionvalue3')
+
 
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,7 +28,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
 class CreateEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalEntry
-        fields = ('_id', 'entry','userid', 'entryname', 'username', 'created_at', 'emotion1', 'emotionvalue1', 'emotion2', 'emotionvalue2', 'emotion3', 'emotionvalue3')
+        fields = ('entry','userid', 'entryname', 'username', 'created_at', 'emotion1', 'emotionvalue1', 'emotion2', 'emotionvalue2', 'emotion3', 'emotionvalue3')
  
 
 """

@@ -1,8 +1,10 @@
 import BackButton from "../Buttons/BackButton";
 import SubmitButton from "../Buttons/SubmitButton";
 import JournalEntry from "./JournalEntry";
-import JournalTags from "./JournalTags";
+import JournalTags from "./JournalTag";
 import React, { useState } from "react";
+import JournalTag from "./JournalTag";
+import JournalTagValue from "./JournalTagValue";
 
 const Journal = ({ setCurrentPage, username, _id }) => {
   const setPage = (newPage) => {
@@ -12,7 +14,7 @@ const Journal = ({ setCurrentPage, username, _id }) => {
   const [formField, setFormField] = useState({
     entry: "",
     // tags: "",
-    userid: _id,
+    userid: _id._id,
     entryname: "ga",
     username: username,
     emotion1: "",
@@ -117,7 +119,7 @@ const Journal = ({ setCurrentPage, username, _id }) => {
   return (
     <div>
       <div>
-        <p>Create New Entry {_id}</p>
+        <p>Create New Entry, {_id.nickname}</p>
         <form className="" onSubmit={onFormSubmit}>
           <p>
             <label>Today, </label>
@@ -136,72 +138,41 @@ const Journal = ({ setCurrentPage, username, _id }) => {
           <p>
             <label>I felt... </label>
           </p>
+          <JournalTag
+            name="emotion1"
+            value={formField.emotion1}
+            onChange={onTag1Change}
+          />
+          <JournalTagValue
+            name="emotionvalue1"
+            value={formField.emotionvalue1}
+            onChange={onTagValue1Change}
+          />
+          <p></p>
+          <JournalTag
+            name="emotion2"
+            value={formField.emotion2}
+            onChange={onTag2Change}
+          />
+          <JournalTagValue
+            name="emotionvalue2"
+            value={formField.emotionvalue2}
+            onChange={onTagValue2Change}
+          />
+          <p></p>
+          <JournalTag
+            name="emotion3"
+            value={formField.emotion3}
+            onChange={onTag3Change}
+          />
+          <JournalTagValue
+            name="emotionvalue3"
+            value={formField.emotionvalue3}
+            onChange={onTagValue3Change}
+          />
           <p>
-            <input
-              required={false}
-              name="emotion1"
-              value={formField.emotion1}
-              onChange={onTag1Change}
-              maxLength={22}
-              placeholder="Tag one emotion. "
-            />
-            <label> (Intensity 1 to 10) </label>
-            <input
-              style={{ width: "2rem" }}
-              type="number"
-              min={1}
-              max={10}
-              name="emotionvalue1"
-              required={false}
-              value={formField.emotionvalue1}
-              onChange={onTagValue1Change}
-            />
+            <input type="submit" value="Submit Entry" />
           </p>
-          <p>
-            <input
-              required={false}
-              name="emotion2"
-              value={formField.emotion2}
-              onChange={onTag2Change}
-              maxLength={22}
-              placeholder="Tag one emotion. "
-            />
-
-            <label> (Intensity 1 to 10)</label>
-            <input
-              style={{ width: "2rem" }}
-              type="number"
-              min={1}
-              max={10}
-              name="emotionvalue2"
-              required={false}
-              value={formField.emotionvalue2}
-              onChange={onTagValue2Change}
-            />
-          </p>
-          <p>
-            <input
-              required={false}
-              name="emotion3"
-              value={formField.emotion3}
-              onChange={onTag3Change}
-              maxLength={22}
-              placeholder="Tag one emotion. "
-            />
-
-            <label> (Intensity 1 to 10) </label>
-            <input
-              style={{ width: "2rem" }}
-              type="number"
-              min={1}
-              max={10}
-              name="emotionvalue3"
-              required={false}
-              value={formField.emotionvalue3}
-              onChange={onTagValue3Change}
-            />
-          </p>
-          <input type="submit" value="Submit Entry" />
         </form>
       </div>
       <BackButton setCurrentPage={setCurrentPage} />

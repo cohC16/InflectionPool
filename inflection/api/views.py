@@ -1,11 +1,12 @@
 from os import stat
-from .serializers import EntrySerializer, InflectionUserSerializer, CreateUserSerializer, CreateEntrySerializer, UserLookupSerializer
+from .serializers import EntrySerializer, EntryViewbyUserSerializer, InflectionUserSerializer, CreateUserSerializer, CreateEntrySerializer, UserLookupSerializer
 from .models import InflectionUser, JournalEntry
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework.request import Request
+
 
 
 class InflectionUserView(generics.ListAPIView):
@@ -26,7 +27,8 @@ class InflectionUserLookup(APIView):
             if not query:
                 return (Response({"Message":"Incorrect Username/Password"}, status=status.HTTP_400_BAD_REQUEST))
             else:
-                return (Response({"_id":query._id}, status=status.HTTP_202_ACCEPTED))
+                return (Response({"_id":query._id, "nickname":query.nickname
+                }, status=status.HTTP_202_ACCEPTED))
 
         return (Response({"Message":"Invalid serializer"}, status=status.HTTP_400_BAD_REQUEST))
 
@@ -36,6 +38,59 @@ class EntryView(generics.ListAPIView):
     queryset = JournalEntry.objects.all()
     serializer_class = EntrySerializer
 
+class EntryViewbyUser(APIView):
+    serializer_class = EntryViewbyUserSerializer
+    def post(self, request, format=None):
+        if not self.request.session.exists(self.request.session.session_key):
+            self.request.session.create()
+        serializer =  self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            userid = serializer.data.get('_id')
+            username = serializer.data.get('username')
+            queryset =  JournalEntry.objects.filter(username=username, userid=userid).all()
+            if not queryset.exists():
+                return (Response({"Message":"No entries found"}, status=status.HTTP_204_NO_CONTENT))
+            else:
+                entry_array = []
+                for entry in queryset:
+                    entry_array.append(((EntrySerializer(entry).data)))
+                return (Response(entry_array, status=status.HTTP_200_OK))
+
+        return (Response({"Message":"Invalid serializer"}, status=status.HTTP_400_BAD_REQUEST))
+
+class CreateEntryView(APIView):
+    
+    serializer_class = CreateEntrySerializer
+    
+    def post(self, request, format=None):
+        from .models import JournalEntry
+        # if not self.request.session.exists(self.request.session.session_key):
+        #     self.request.session.create()
+        #  '_id', 'userid', 'entryname', 'username', 'created_at', 'emotion1', 'emotionvalue1', 'emotion2', 'emotionvalue2', 'emotion3', 'emotionvalue3'
+        serializer =  self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            _id = serializer.data.get('_id')
+            userid = serializer.data.get('userid')
+            entry = serializer.data.get('entry')
+            entryname = serializer.data.get('entryname')
+            username = serializer.data.get('username')
+            emotion1 = serializer.data.get('emotion1')
+            emotion2 = serializer.data.get('emotion2')
+            emotion3 = serializer.data.get('emotion3')
+            emotionvalue1 = serializer.data.get('emotionvalue1')
+            emotionvalue2 = serializer.data.get('emotionvalue2')
+            emotionvalue3 = serializer.data.get('emotionvalue3')
+            queryset = JournalEntry.objects.filter(username=username).last()
+            # if queryset.exists():
+            #     # inflectionUser = queryset[0]
+            #     if queryset.userid != userid:
+            #         return (Response({"Message":"User does not exists"}, status=status.HTTP_400_BAD_REQUEST))
+            # else:
+            JournalEntry = JournalEntry(_id=_id, userid=userid, entryname=entryname, emotion1=emotion1, emotion2=emotion2,emotion3=emotion3,username=username, emotionvalue1=emotionvalue1,emotionvalue2=emotionvalue2,emotionvalue3=emotionvalue3,entry=entry)
+            JournalEntry.save()
+            return (Response(CreateEntrySerializer(JournalEntry).data, status=status.HTTP_201_CREATED))
+
+        return (Response({"Message":"Invalid serializer"}, status=status.HTTP_400_BAD_REQUEST))
 
  
 class CreateInflectionUserView(APIView):
@@ -78,7 +133,7 @@ class CreateEntryView(APIView):
         #  '_id', 'userid', 'entryname', 'username', 'created_at', 'emotion1', 'emotionvalue1', 'emotion2', 'emotionvalue2', 'emotion3', 'emotionvalue3'
         serializer =  self.serializer_class(data=request.data)
         if serializer.is_valid():
-            _id = serializer.data.get('_id')
+            # _id = serializer.data.get('_id')
             userid = serializer.data.get('userid')
             entry = serializer.data.get('entry')
             entryname = serializer.data.get('entryname')
@@ -95,7 +150,7 @@ class CreateEntryView(APIView):
             #     if queryset.userid != userid:
             #         return (Response({"Message":"User does not exists"}, status=status.HTTP_400_BAD_REQUEST))
             # else:
-            JournalEntry = JournalEntry(_id=_id, userid=userid, entryname=entryname, emotion1=emotion1, emotion2=emotion2,emotion3=emotion3,username=username, emotionvalue1=emotionvalue1,emotionvalue2=emotionvalue2,emotionvalue3=emotionvalue3,entry=entry)
+            JournalEntry = JournalEntry(userid=userid, entryname=entryname, emotion1=emotion1, emotion2=emotion2,emotion3=emotion3,username=username, emotionvalue1=emotionvalue1,emotionvalue2=emotionvalue2,emotionvalue3=emotionvalue3,entry=entry)
             JournalEntry.save()
             return (Response(CreateEntrySerializer(JournalEntry).data, status=status.HTTP_201_CREATED))
 
