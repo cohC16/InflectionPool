@@ -148,7 +148,7 @@ const Journal = ({ setCurrentPage, username, _id }) => {
             value={formField.emotionvalue1}
             onChange={onTagValue1Change}
           />
-          <p></p>
+
           <JournalTag
             name="emotion2"
             value={formField.emotion2}
