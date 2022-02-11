@@ -17,8 +17,7 @@ const Login = ({
   const [hasSubmitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    let mounted = true;
+  const effectCleanup = () => {
     if (hasSubmitted) {
       if (_id) {
         setCurrentPage(2);
@@ -26,6 +25,11 @@ const Login = ({
         setErrorMessage("Invalid Login Credentials");
       }
     }
+  };
+
+  useEffect(() => {
+    effectCleanup();
+    let mounted = true;
     return function cleanup() {
       mounted = false;
       console.log("unmounted login");

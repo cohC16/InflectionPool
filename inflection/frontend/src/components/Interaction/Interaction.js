@@ -71,9 +71,9 @@ const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
   }
   return (
     <div>
+      <BackButton setCurrentPage={setCurrentPage} />
       <p>~Your Entries~</p>
       <div>{haveDisplay}</div>
-      <BackButton setCurrentPage={setCurrentPage} />
     </div>
   );
 };

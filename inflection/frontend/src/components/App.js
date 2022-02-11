@@ -88,5 +88,5 @@ const App = () => {
 
 export default App;
 
-const appDiv = document.getElementById("app");
-render(<App />, appDiv);
+// const appDiv = document.getElementById("app");
+// render(<App />, appDiv);
