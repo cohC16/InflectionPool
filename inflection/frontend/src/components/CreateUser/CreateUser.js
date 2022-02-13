@@ -1,5 +1,6 @@
 import ExternalAuth from "./ExternalAuth";
 import React, { useState } from "react";
+import BackToLoginButton from "../Buttons/BackToLoginButton";
 
 const CreateUser = ({
   setCurrentPage,
@@ -15,6 +16,7 @@ const CreateUser = ({
     nickname: "",
     email: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onPasswordChange = (event) => {
     setFormField({
@@ -22,8 +24,18 @@ const CreateUser = ({
       password: event.target.value,
     });
   };
+
   const id_setter = (data) => {
-    set_id({ _id: data._id, nickname: data.nickname });
+    if (data.created_at) {
+      setUsername(data.username);
+      setUserpass(data.password);
+      setNickname(data.nickname);
+      setEmail(data.email);
+      set_id({ _id: data._id, nickname: data.nickname });
+      setCurrentPage(2);
+    } else {
+      setErrorMessage("Username or Email already exists.");
+    }
   };
 
   const onUsernameChange = (event) => {
@@ -44,6 +56,22 @@ const CreateUser = ({
       email: event.target.value,
     });
   };
+  // const onFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   setSubmitted(true);
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({
+  //       username: formField.username,
+  //       password: formField.password,
+  //     }),
+  //   };
+  //   setUsername(formField.username);
+  //   fetch("/api/user", requestOptions)
+  //     .then((response) => response.json())
+  //     .then((data) => set_id({ _id: data._id, nickname: data.nickname }));
+  // };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -57,24 +85,18 @@ const CreateUser = ({
         email: formField.email,
       }),
     };
-    console.log(
-      formField.username,
-      formField.password,
-      formField.nickname,
-      formField.email
-    );
-    setUsername(formField.username);
-    setUserpass(formField.password);
-    setNickname(formField.nickname);
-    setEmail(formField.email);
+
+    //   setUsername(formField.username);
+    //   fetch("/api/user", requestOptions)
+    //     .then((response) => response.json())
+    //     .then((data) => set_id({ _id: data._id, nickname: data.nickname }));
+    // };
+
     fetch("/api/users/create", requestOptions).then((response) =>
-      response
-        .json()
-        .then((data) => id_setter({ _id: data._id, nickname: data.nickname }))
+      response.json().then((data) => id_setter(data))
     );
 
     // .then(set_id(response["_id"]));
-    setCurrentPage(2);
   };
   const setPage = () => {
     console.log(formField.username);
@@ -86,7 +108,11 @@ const CreateUser = ({
   };
   return (
     <div>
-      <p>Create New User Account</p>
+      <p>
+        Create New User Account   
+        <BackToLoginButton setCurrentPage={setCurrentPage} />
+      </p>
+
       <form className="" onSubmit={onFormSubmit}>
         <p>
           <label>Username </label>
@@ -135,6 +161,7 @@ const CreateUser = ({
         </p>
         <input type="submit" value="Create Profile" />
       </form>
+      <p>{errorMessage}</p>
     </div>
   );
 };

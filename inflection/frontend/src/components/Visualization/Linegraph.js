@@ -26,18 +26,30 @@ function Linegraph({ data }) {
 
   return (
     <div>
-      <p>Linegraph component</p>
       <ResponsiveContainer width="80%" aspect={3}>
-        <p>
-          <LineChart data={datafake} margin={{ left: 250 }}>
-            <CartesianGrid />
-            <XAxis dataKey="time" interval={"preserveEnd"} />
-            <YAxis dataKey="value" interval={"preserveEnd"}></YAxis>
-            <Legend />
-            <Tooltip />
-            <Line dataKey="value" stroke="red" activeDot={{ r: 8 }} />
-          </LineChart>
-        </p>
+        <LineChart
+          data={datafake}
+          margin={{
+            top: 16,
+            right: 16,
+            bottom: 40,
+            left: 24,
+          }}
+        >
+          <CartesianGrid />
+          <XAxis dataKey="time">
+            <Label angle={0} position="bottom" style={{ textAnchor: "top" }}>
+              Per time
+            </Label>
+          </XAxis>
+          <YAxis dataKey="value">
+            <Label angle={270} position="left" style={{ textAnchor: "middle" }}>
+              Emo
+            </Label>
+          </YAxis>
+          <Tooltip />
+          <Line dataKey="value" stroke="red" activeDot={{ r: 8 }} />
+        </LineChart>
       </ResponsiveContainer>
     </div>
   );

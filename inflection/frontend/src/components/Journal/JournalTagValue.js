@@ -1,31 +1,33 @@
 import React, { Component } from "react";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 
 const JournalTagValue = ({ name, value, onChange }) => {
-  console.log(value);
   return (
     <span>
-      <label>
-        Intensity:
-        <select
+      <FormControl sx={{ m: 0.6, minWidth: 100 }}>
+        <InputLabel>Intensity</InputLabel>
+        <Select
           value={value}
           onChange={onChange}
           name="emotionvalue1"
           required={false}
         >
-          <option value=""></option>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-          <option value={6}>6</option>
-          <option value={7}>7</option>
-          <option value={8}>8</option>
-          <option value={9}>9</option>
-          <option value={10}>10</option>
-        </select>
-      </label>
-      {/* <input type="submit" value="Submit" />
+          <MenuItem value={0}></MenuItem>
+          <MenuItem value={1}>1</MenuItem>
+          <MenuItem value={2}>2</MenuItem>
+          <MenuItem value={3}>3</MenuItem>
+          <MenuItem value={4}>4</MenuItem>
+          <MenuItem value={5}>5</MenuItem>
+          <MenuItem value={6}>6</MenuItem>
+          <MenuItem value={7}>7</MenuItem>
+          <MenuItem value={8}>8</MenuItem>
+          <MenuItem value={9}>9</MenuItem>
+          <MenuItem value={10}>10</MenuItem>
+        </Select>
+        {/* <input type="submit" value="Submit" />
 
         <input
           required={false}
@@ -35,6 +37,7 @@ const JournalTagValue = ({ name, value, onChange }) => {
           maxLength={22}
           placeholder="Tag one emotion. "
         /> */}
+      </FormControl>
     </span>
   );
 };

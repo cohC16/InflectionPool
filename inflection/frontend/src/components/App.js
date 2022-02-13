@@ -6,13 +6,8 @@ import Login from "./Login/Login";
 import Interaction from "./Interaction/Interaction";
 import Visualization from "./Visualization/Visualization";
 import CreateUser from "./CreateUser/CreateUser";
-
-// export default class App extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   render() {
+import Theme from "./Theme";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -72,10 +67,16 @@ const App = () => {
       />
     </div>,
     <div>
-      <Visualization setCurrentPage={setCurrentPage} />
+      <Visualization
+        setCurrentPage={setCurrentPage}
+        username={username}
+        _id={_id}
+      />
     </div>,
   ];
-  return pageComponents[currentPage];
+  return (
+    <ThemeProvider theme={Theme}>{pageComponents[currentPage]}</ThemeProvider>
+  );
   // <div>
   //   <h1>App.js component</h1>
   //   <Login />

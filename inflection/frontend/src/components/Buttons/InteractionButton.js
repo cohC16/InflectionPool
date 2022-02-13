@@ -1,13 +1,14 @@
 import React from "react";
-
+import Button from "@mui/material/Button/";
 const InteractionButton = ({ setCurrentPage }) => {
   const setPage = (newPage) => {
     setCurrentPage(4);
   };
   return (
     <div>
-      <p>InteractionButton component</p>
-      <button onClick={setPage}>Reflect</button>
+      <Button variant="contained" onClick={setPage}>
+        Reflect
+      </Button>
     </div>
   );
 };

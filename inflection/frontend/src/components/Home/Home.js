@@ -9,21 +9,16 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
+// import Button from "@material-ui/core/Button";
+// import Grid from "@material-ui/core/Grid";
+// import Typography from "@material-ui/core/Typography";
+// import TextField from "@material-ui/core/TextField";
+// import FormHelperText from "@material-ui/core/FormHelperText";
+// import FormControl from "@material-ui/core/FormControl";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import Radio from "@material-ui/core/Radio";
+// import RadioGroup from "@material-ui/core/RadioGroup";
 
-// export default class Home extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//   render() {
 const Home = ({ setCurrentPage, username, _id, nickname }) => {
   const setPage = (newPage) => {
     setCurrentPage(1);
@@ -32,17 +27,12 @@ const Home = ({ setCurrentPage, username, _id, nickname }) => {
     <div>
       <p>Homepage</p>
       <p>Welcome {nickname}</p>
-      <ul>
-        <li>
-          <JournalButton setCurrentPage={setCurrentPage} />
-        </li>
-        <li>
-          <InteractionButton setCurrentPage={setCurrentPage} />
-        </li>
-        <li>
-          <VisualizationButton setCurrentPage={setCurrentPage} />
-        </li>
-      </ul>
+      <JournalButton setCurrentPage={setCurrentPage} />
+      <p></p>
+      <InteractionButton setCurrentPage={setCurrentPage} />
+      <p></p>
+      <VisualizationButton setCurrentPage={setCurrentPage} />
+      <p></p>
     </div>
   );
 };

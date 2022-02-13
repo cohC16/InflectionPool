@@ -1,5 +1,6 @@
 import ExternalAuth from "./ExternalAuth";
 import React, { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
 
 const Login = ({
   setCurrentPage,
@@ -110,10 +111,14 @@ const Login = ({
           />
         </p>
         <p>{errorMessage}</p>
-        <input type="submit" value="Login" />
+        <Button variant="contained" type="submit" value="Login">
+          Login
+        </Button>
       </form>
       <p>
-        <button onClick={setPage2}>Create User</button>
+        <Button variant="contained" onClick={setPage2}>
+          Create User
+        </Button>
       </p>
     </div>
 

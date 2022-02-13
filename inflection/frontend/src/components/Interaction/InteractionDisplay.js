@@ -1,4 +1,5 @@
 import React, { Component, useEffect } from "react";
+import Button from "@mui/material/Button/";
 
 const InteractionDisplay = ({
   _id,
@@ -14,7 +15,7 @@ const InteractionDisplay = ({
   emotionvalue3,
 }) => {
   return (
-    <div>
+    <Button variant="contained">
       <h4>Entry Id - {_id}</h4>
       <h5>Entry Name - "{entryname}";</h5>
       <p> Entry - "{entry}"; </p>
@@ -28,7 +29,7 @@ const InteractionDisplay = ({
         {emotion3 ? `; ${emotion3}` : null}
         {emotionvalue3 ? ` - (${emotionvalue3})` : null}
       </p>
-    </div>
+    </Button>
   );
 };
 export default InteractionDisplay;

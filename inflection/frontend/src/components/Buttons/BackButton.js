@@ -1,13 +1,15 @@
 import React from "react";
-
+import Button from "@mui/material/Button/";
 const BackButton = ({ setCurrentPage }) => {
   const setPage = (newPage) => {
     setCurrentPage(2);
   };
   return (
-    <div>
-      <button onClick={setPage}>Back</button>
-    </div>
+    <span>
+      <Button variant="contained" onClick={setPage}>
+        Back
+      </Button>
+    </span>
   );
 };
 

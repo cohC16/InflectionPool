@@ -3,7 +3,7 @@ import SubmitButton from "../Buttons/SubmitButton";
 import InteractionDisplay from "./InteractionDisplay";
 import InteractionField from "./InteractionField";
 import React, { useEffect, useState } from "react";
-import { ContactSupportOutlined } from "@material-ui/icons";
+// import { ContactSupportOutlined } from "@material-ui/icons";
 
 const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
   const [displayEntries, setDisplayEntries] = useState("");
@@ -71,6 +71,7 @@ const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
   }
   return (
     <div>
+         
       <BackButton setCurrentPage={setCurrentPage} />
       <p>~Your Entries~</p>
       <div>{haveDisplay}</div>

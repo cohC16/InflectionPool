@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@mui/material/Button/";
 
 const VisualizationButton = ({ setCurrentPage }) => {
   const setPage = (newPage) => {
@@ -6,8 +7,9 @@ const VisualizationButton = ({ setCurrentPage }) => {
   };
   return (
     <div>
-      <p>VisualizationButton component</p>
-      <button onClick={setPage}>Circumspect</button>
+      <Button variant="contained" onClick={setPage}>
+        Circumspect
+      </Button>
     </div>
   );
 };

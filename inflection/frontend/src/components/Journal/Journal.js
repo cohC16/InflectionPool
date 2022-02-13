@@ -5,6 +5,8 @@ import JournalTags from "./JournalTag";
 import React, { useState } from "react";
 import JournalTag from "./JournalTag";
 import JournalTagValue from "./JournalTagValue";
+import FormControl from "@mui/material/FormControl";
+import Grid from "@mui/material/Grid";
 
 const Journal = ({ setCurrentPage, username, _id }) => {
   const setPage = (newPage) => {
@@ -119,7 +121,13 @@ const Journal = ({ setCurrentPage, username, _id }) => {
   return (
     <div>
       <div>
-        <p>Create New Entry, {_id.nickname}</p>
+        <p>
+          Create New Entry, {_id.nickname}
+          <Grid container justifyContent="flex-end">
+            <BackButton setCurrentPage={setCurrentPage} />
+          </Grid>
+        </p>
+        <FormControl></FormControl>
         <form className="" onSubmit={onFormSubmit}>
           <p>
             <label>Today, </label>
@@ -148,6 +156,7 @@ const Journal = ({ setCurrentPage, username, _id }) => {
             value={formField.emotionvalue1}
             onChange={onTagValue1Change}
           />
+          <p></p>
 
           <JournalTag
             name="emotion2"
@@ -175,7 +184,6 @@ const Journal = ({ setCurrentPage, username, _id }) => {
           </p>
         </form>
       </div>
-      <BackButton setCurrentPage={setCurrentPage} />
     </div>
   );
 };
