@@ -14,23 +14,15 @@ const InteractionDisplay = ({ entries }) => {
     "created_at",
   ];
   const emotionOutput = [];
-  const Gronk = (key, keyValue) => {
-    return (
-      <div>
-        {key} ({keyValue})
-      </div>
-    );
-  };
 
   for (const key in entries) {
     if (emotionlessKeys.includes(key) === false) {
+      console.log([key, entries[key]]);
       if (entries[key] > 0) {
-        console.log(entries[key]);
-        emotionOutput.push(Gronk(key, entries[key]));
+        emotionOutput.push([key, entries[key]]);
       }
     }
   }
-  console.log(emotionOutput);
   return (
     <ThemeProvider theme={ThemeOff}>
       <p>
@@ -40,7 +32,7 @@ const InteractionDisplay = ({ entries }) => {
               {entries._id}
             </Grid>
             <Grid item xs={5.5}>
-              "{entries.entry}..."
+              {entries.entry}
               {/* Number( */}
             </Grid>
             <Grid item xs={2}>

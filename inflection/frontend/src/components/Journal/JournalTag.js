@@ -20,7 +20,7 @@ const JournalTag = ({ name, value, onChange }) => {
           <MenuItem value="Ashamed">Ashamed</MenuItem>
           <MenuItem value="Betrayed">Betrayed</MenuItem>
           <MenuItem value="Bitter">Bitter</MenuItem>
-          <MenuItem value="Brain Foggy">Brain Foggy</MenuItem>
+          <MenuItem value="Brain_Foggy">Brain Foggy</MenuItem>
           <MenuItem value="Confused">Confused</MenuItem>
           <MenuItem value="Content">Content</MenuItem>
           <MenuItem value="Curious">Curious</MenuItem>

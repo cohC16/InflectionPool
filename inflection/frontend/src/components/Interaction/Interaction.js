@@ -33,6 +33,7 @@ const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
         .then((response) => response.json())
         .then((data) => setDisplayEntries(data));
     }
+    console.log(displayEntries);
   };
   useEffect(() => {
     mountDisplayEntries();
@@ -40,7 +41,7 @@ const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
 
   const entriesComponents = [];
   if (displayEntries) {
-    console.log("line39", haveDisplay);
+    console.log("line39", displayEntries[0]);
     if (haveDisplay.length == 0) {
       console.log("line41", haveDisplay);
       for (
@@ -48,21 +49,12 @@ const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
         entryindex < displayEntries.length;
         entryindex++
       ) {
+        console.log(
+          "displayEntries[entryindex]",
+          displayEntries[entryindex]["entry"]
+        );
         entriesComponents.push(
-          <InteractionDisplay
-            key={displayEntries[entryindex]._id}
-            _id={displayEntries[entryindex]._id}
-            entry={displayEntries[entryindex].entry}
-            userid={displayEntries[entryindex].userid}
-            entryname={displayEntries[entryindex].entryname}
-            created_at={displayEntries[entryindex].created_at}
-            emotion1={displayEntries[entryindex].emotion1}
-            emotionvalue1={displayEntries[entryindex].emotionvalue1}
-            emotion2={displayEntries[entryindex].emotion2}
-            emotionvalue2={displayEntries[entryindex].emotionvalue2}
-            emotion3={displayEntries[entryindex].emotion3}
-            emotionvalue3={displayEntries[entryindex].emotionvalue3}
-          />
+          <InteractionDisplay entries={displayEntries[entryindex]} />
         );
       }
       console.log(entriesComponents.length, displayEntries.length);
