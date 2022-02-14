@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@mui/material/Button/";
 
 const CreateUserButton = ({ setCurrentPage }) => {
   const setPage = (newPage) => {
@@ -7,7 +8,7 @@ const CreateUserButton = ({ setCurrentPage }) => {
   return (
     <div>
       <p>CreateUser Button component</p>
-      <button onClick={setPage}>Create User</button>
+      <Button onClick={setPage}>Create User</Button>
     </div>
   );
 };

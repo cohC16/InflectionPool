@@ -1,14 +1,16 @@
 import React from "react";
-
-const BackToLoginButton = ({ setCurrentPage }) => {
+import Button from "@mui/material/Button/";
+const BackButton = ({ setCurrentPage }) => {
   const setPage = (newPage) => {
     setCurrentPage(0);
   };
   return (
     <span>
-      <button onClick={setPage}>Back</button>
+      <Button variant="contained" onClick={setPage}>
+        Back
+      </Button>
     </span>
   );
 };
 
-export default BackToLoginButton;
+export default BackButton;

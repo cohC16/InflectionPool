@@ -1,6 +1,7 @@
 import ExternalAuth from "./ExternalAuth";
 import React, { useState } from "react";
 import BackToLoginButton from "../Buttons/BackToLoginButton";
+import Button from "@mui/material/Button";
 
 const CreateUser = ({
   setCurrentPage,
@@ -159,7 +160,9 @@ const CreateUser = ({
             // helperText="Real email for real human."
           />
         </p>
-        <input type="submit" value="Create Profile" />
+        <Button variant="contained" type="submit">
+          Create Profile
+        </Button>
       </form>
       <p>{errorMessage}</p>
     </div>

@@ -1,6 +1,8 @@
 import ExternalAuth from "./ExternalAuth";
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 
 const Login = ({
   setCurrentPage,
@@ -85,36 +87,54 @@ const Login = ({
 
   return (
     <div>
-      <h3>Login, friend.</h3>
-      <form className="" onSubmit={onFormSubmit}>
-        <p>
-          <label>Username - </label>
-          <input
-            name="Username"
-            required={true}
-            maxLength={20}
-            value={formField.username}
-            onChange={onUsernameChange}
-            placeholder="Username"
-          />{" "}
-        </p>
-        <p>
-          <label>Password - </label>
-          <input
-            type="password"
-            name="Password"
-            value={formField.password}
-            onChange={onPasswordChange}
-            required={true}
-            maxLength={22}
-            placeholder="Password"
-          />
-        </p>
-        <p>{errorMessage}</p>
-        <Button variant="contained" type="submit" value="Login">
-          Login
-        </Button>
-      </form>
+      <Box paddingTop="1rem" style={{ minHeight: "3.5rem" }}>
+        <Grid
+          bgcolor="#ffebee"
+          borderRadius={2}
+          paddingTop="1rem"
+          display="flex"
+          item
+          xs={12}
+        >
+          <Box style={{ minHeight: "2.5rem" }} fontFamily="Montserrat">
+               Log In
+          </Box>
+        </Grid>
+      </Box>
+      <Box fontFamily="Montserrat">
+        <form className="" onSubmit={onFormSubmit}>
+          <p>
+            <label>Username - </label>
+            <input
+              style={{
+                fontFamily: "Montserrat",
+              }}
+              name="Username"
+              required={true}
+              maxLength={20}
+              value={formField.username}
+              onChange={onUsernameChange}
+              placeholder="Username"
+            />{" "}
+          </p>
+          <p>
+            <label>Password - </label>
+            <input
+              type="password"
+              name="Password"
+              value={formField.password}
+              onChange={onPasswordChange}
+              required={true}
+              maxLength={22}
+              placeholder="Password"
+            />
+          </p>
+          <p>{errorMessage}</p>
+          <Button variant="contained" type="submit" value="Login">
+            Login
+          </Button>
+        </form>
+      </Box>
       <p>
         <Button variant="contained" onClick={setPage2}>
           Create User

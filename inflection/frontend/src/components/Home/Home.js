@@ -2,6 +2,8 @@ import React from "react";
 import InteractionButton from "../Buttons/InteractionButton";
 import JournalButton from "../Buttons/JournalButton";
 import VisualizationButton from "../Buttons/VisualizationButton";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,8 +27,24 @@ const Home = ({ setCurrentPage, username, _id, nickname }) => {
   };
   return (
     <div>
-      <p>Homepage</p>
-      <p>Welcome {nickname}</p>
+      <Box
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        style={{ minHeight: "3.5rem" }}
+      >
+        <Grid
+          bgcolor="#ffebee"
+          borderRadius={2}
+          paddingTop="1rem"
+          display="flex"
+          item
+          xs={12}
+        >
+          <Box style={{ minHeight: "2.5rem" }} fontFamily="Montserrat">
+               Welcome Home, {nickname}
+          </Box>
+        </Grid>
+      </Box>
       <JournalButton setCurrentPage={setCurrentPage} />
       <p></p>
       <InteractionButton setCurrentPage={setCurrentPage} />

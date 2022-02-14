@@ -1,13 +1,13 @@
 import BackButton from "../Buttons/BackButton";
-import SubmitButton from "../Buttons/SubmitButton";
-import JournalEntry from "./JournalEntry";
-import JournalTags from "./JournalTag";
 import React, { useState } from "react";
 import JournalTag from "./JournalTag";
 import JournalTagValue from "./JournalTagValue";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
-
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import ThemeOff from "../ThemeOff";
+import { ThemeProvider } from "@mui/material/styles";
 const Journal = ({ setCurrentPage, username, _id }) => {
   const setPage = (newPage) => {
     setCurrentPage(1);
@@ -121,31 +121,60 @@ const Journal = ({ setCurrentPage, username, _id }) => {
   return (
     <div>
       <div>
-        <p>
-          Create New Entry, {_id.nickname}
-          <Grid container justifyContent="flex-end">
-            <BackButton setCurrentPage={setCurrentPage} />
+        <Grid container justifyContent="flex-end">
+          <BackButton setCurrentPage={setCurrentPage} />
+        </Grid>
+
+        <Box paddingTop="1rem" style={{ minHeight: "3.5rem" }}>
+          <Grid
+            bgcolor="#ffebee"
+            borderRadius={2}
+            paddingTop="1rem"
+            display="flex"
+            item
+            xs={12}
+          >
+            <Box style={{ minHeight: "2.5rem" }} fontFamily="Montserrat">
+                 Your Thoughts
+            </Box>
           </Grid>
-        </p>
-        <FormControl></FormControl>
+        </Box>
+
         <form className="" onSubmit={onFormSubmit}>
           <p>
-            <label>Today, </label>
-          </p>
-          <p>
             <textarea
-              style={{ width: "95%", height: "10rem" }}
+              style={{
+                width: "95%",
+                height: "10rem",
+                fontFamily: "Montserrat",
+              }}
               name="entry"
               required={true}
               value={formField.entry}
               onChange={onEntryChange}
               maxLength={3000}
-              placeholder="Your entry goes here. "
+              placeholder="Today..."
             />
           </p>
-          <p>
-            <label>I felt... </label>
-          </p>
+
+          <Box
+            paddingBottom="rem"
+            paddingTop="0rem"
+            style={{ minHeight: "3.5rem" }}
+          >
+            <Grid
+              bgcolor="#ffebee"
+              borderRadius={2}
+              paddingTop="1rem"
+              display="flex"
+              item
+              xs={12}
+            >
+              <Box style={{ minHeight: "2.5rem" }} fontFamily="Montserrat">
+                   Your Feelings
+              </Box>
+            </Grid>
+          </Box>
           <JournalTag
             name="emotion1"
             value={formField.emotion1}
@@ -180,7 +209,9 @@ const Journal = ({ setCurrentPage, username, _id }) => {
             onChange={onTagValue3Change}
           />
           <p>
-            <input type="submit" value="Submit Entry" />
+            <Button variant="contained" type="submit" value="Submit Entry">
+              Submit Entry
+            </Button>
           </p>
         </form>
       </div>

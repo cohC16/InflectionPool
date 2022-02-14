@@ -59,14 +59,12 @@ const Visualization = ({ setCurrentPage, username, _id }) => {
   };
   return (
     <div>
-      <p>
-        Visualization component
-        <span>
-          <Grid container justifyContent="flex-end">
-            <BackButton setCurrentPage={setCurrentPage} />
-          </Grid>
-        </span>
-      </p>
+      Visualization component
+      <span>
+        <Grid container justifyContent="flex-end">
+          <BackButton setCurrentPage={setCurrentPage} />
+        </Grid>
+      </span>
       <ul>
         <li>
           <SortByButton />

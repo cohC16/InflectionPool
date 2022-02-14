@@ -1,8 +1,12 @@
 import BackButton from "../Buttons/BackButton";
-import SubmitButton from "../Buttons/SubmitButton";
 import InteractionDisplay from "./InteractionDisplay";
-import InteractionField from "./InteractionField";
 import React, { useEffect, useState } from "react";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import ThemeOff from "../ThemeOff";
+import { ThemeProvider } from "@mui/material/styles";
+
 // import { ContactSupportOutlined } from "@material-ui/icons";
 
 const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
@@ -71,9 +75,38 @@ const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
   }
   return (
     <div>
-         
-      <BackButton setCurrentPage={setCurrentPage} />
-      <p>~Your Entries~</p>
+      <div>
+        <Grid container justifyContent="flex-end">
+          <BackButton setCurrentPage={setCurrentPage} />
+        </Grid>
+        <p> </p>
+      </div>
+
+      <ThemeProvider theme={ThemeOff}>
+        <Box
+          paddingTop="1rem"
+          borderRadius={1}
+          bgcolor="#ffebee"
+          fullWidth
+          style={{ minHeight: "3.5rem" }}
+        >
+          <Grid paddingLeft={3} container spacing={2}>
+            <Grid display="flex" justifyContent="center" item xs={1.5}>
+              <Box fontFamily="Montserrat">ENTRY ID</Box>
+            </Grid>
+            <Grid display="flex" justifyContent="center" item xs={5.5}>
+              <Box fontFamily="Montserrat">ENTRY</Box>
+            </Grid>
+            <Grid display="flex" justifyContent="center" item xs={2}>
+              <Box fontFamily="Montserrat">CREATED ON</Box>
+            </Grid>
+            <Grid display="flex" justifyContent="center" item xs={2.5}>
+              <Box fontFamily="Montserrat">EMOTIONS</Box>
+            </Grid>
+          </Grid>
+        </Box>
+      </ThemeProvider>
+
       <div>{haveDisplay}</div>
     </div>
   );
