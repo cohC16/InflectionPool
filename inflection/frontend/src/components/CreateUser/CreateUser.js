@@ -2,7 +2,8 @@ import ExternalAuth from "./ExternalAuth";
 import React, { useState } from "react";
 import BackToLoginButton from "../Buttons/BackToLoginButton";
 import Button from "@mui/material/Button";
-
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 const CreateUser = ({
   setCurrentPage,
   setUsername,
@@ -109,15 +110,38 @@ const CreateUser = ({
   };
   return (
     <div>
-      <p>
-        Create New User Account   
+      <Grid container justifyContent="flex-end">
         <BackToLoginButton setCurrentPage={setCurrentPage} />
-      </p>
+      </Grid>
+
+      <Box paddingTop="1rem" style={{ minHeight: "3.5rem" }}>
+        <Grid
+          bgcolor="#ffebee"
+          borderRadius={2}
+          paddingTop="1rem"
+          display="flex"
+          item
+          xs={12}
+        >
+          <Box style={{ minHeight: "2.5rem" }} fontFamily="Montserrat">
+               Create User
+          </Box>
+        </Grid>
+      </Box>
 
       <form className="" onSubmit={onFormSubmit}>
         <p>
-          <label>Username </label>
+          <label
+            style={{
+              fontFamily: "Montserrat",
+            }}
+          >
+            Username{" "}
+          </label>
           <input
+            style={{
+              fontFamily: "Montserrat",
+            }}
             name="Username"
             required={true}
             value={formField.username}
@@ -127,8 +151,17 @@ const CreateUser = ({
           />
         </p>
         <p>
-          <label>Password </label>
+          <label
+            style={{
+              fontFamily: "Montserrat",
+            }}
+          >
+            Password{" "}
+          </label>
           <input
+            style={{
+              fontFamily: "Montserrat",
+            }}
             type="password"
             required={true}
             name="Password"
@@ -139,8 +172,17 @@ const CreateUser = ({
           />
         </p>
         <p>
-          <label>Nickname </label>
+          <label
+            style={{
+              fontFamily: "Montserrat",
+            }}
+          >
+            Nickname{" "}
+          </label>
           <input
+            style={{
+              fontFamily: "Montserrat",
+            }}
             name="Nickname"
             required={true}
             value={formField.nickname}
@@ -150,8 +192,17 @@ const CreateUser = ({
           />
         </p>
         <p>
-          <label>Email </label>
+          <label
+            style={{
+              fontFamily: "Montserrat",
+            }}
+          >
+            Email{" "}
+          </label>
           <input
+            style={{
+              fontFamily: "Montserrat",
+            }}
             name="Email"
             value={formField.email}
             onChange={onEmailChange}

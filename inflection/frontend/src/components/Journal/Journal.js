@@ -158,7 +158,7 @@ const Journal = ({ setCurrentPage, username, _id }) => {
           </p>
 
           <Box
-            paddingBottom="rem"
+            paddingBottom=".7rem"
             paddingTop="0rem"
             style={{ minHeight: "3.5rem" }}
           >

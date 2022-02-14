@@ -7,7 +7,6 @@ const BackButton = ({ setCurrentPage }) => {
   return (
     <span>
       <Button variant="contained" onClick={setPage}>
-        
         Back
       </Button>
     </span>

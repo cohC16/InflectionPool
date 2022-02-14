@@ -141,36 +141,6 @@ const Login = ({
         </Button>
       </p>
     </div>
-
-    // <div>
-    //   <p>Login Component</p>
-    //   <ul>
-    //     <li>
-    //       <ExternalAuth />
-    //     </li>
-    //     <li>
-    // <input
-    //   name="Username"
-    //   value={formField.username}
-    //   onChange={onUsernameChange}
-    // />
-    //     </li>
-    //     <li>
-    //       <input
-    //         type="password"
-    //         name="Password"
-    //         value={formField.password}
-    //         onChange={onPasswordChange}
-    //       />
-    //     </li>
-    //     <li>
-    //       <button onClick={setPage}>Login</button>
-    //     </li>
-    //     <li>
-    //       <button onClick={setPage2}>Create User</button>
-    //     </li>
-    //   </ul>
-    // </div>
   );
 };
 
