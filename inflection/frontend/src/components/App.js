@@ -22,6 +22,7 @@ const App = () => {
   const pageComponents = [
     <div>
       <Login
+        key="login"
         setCurrentPage={setCurrentPage}
         setUsername={setUsername}
         setUserpass={setUserpass}
@@ -32,6 +33,7 @@ const App = () => {
     </div>,
     <div>
       <CreateUser
+        key="createuser"
         setCurrentPage={setCurrentPage}
         setUsername={setUsername}
         setNickname={setNickname}
@@ -42,6 +44,7 @@ const App = () => {
     </div>,
     <div>
       <Home
+        key="home"
         setCurrentPage={setCurrentPage}
         username={username}
         userpass={userpass}
@@ -61,6 +64,7 @@ const App = () => {
     </div>,
     <div>
       <Interaction
+        key="interaction"
         setCurrentPage={setCurrentPage}
         username={username}
         nickname={nickname}
@@ -71,6 +75,7 @@ const App = () => {
     </div>,
     <div>
       <Visualization
+        key="visualization"
         setCurrentPage={setCurrentPage}
         username={username}
         _id={_id}
@@ -78,6 +83,7 @@ const App = () => {
     </div>,
     <div>
       <JournalUpdate
+        key="journalupdate"
         setCurrentPage={setCurrentPage}
         username={username}
         nickname={nickname}
@@ -89,7 +95,9 @@ const App = () => {
     </div>,
   ];
   return (
-    <ThemeProvider theme={Theme}>{pageComponents[currentPage]}</ThemeProvider>
+    <ThemeProvider key="roulettedisplay" theme={Theme}>
+      {pageComponents[currentPage]}
+    </ThemeProvider>
   );
   // <div>
   //   <h1>App.js component</h1>

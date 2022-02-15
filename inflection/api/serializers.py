@@ -43,7 +43,12 @@ class UpdateEntrySerializer(serializers.ModelSerializer):
 class ReturnEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalEntry
-        fields = ('entry_id', 'entry','userid', 'entryname', 'username', 'created_at', 'Angry','Ashamed','Betrayed','Bitter','Brain_Foggy','Confused','Content','Curious','Disappointed','Disgusted','Dissociated','Embarrassed','Excited','Focused','Frustrated','Grateful','Guilty','Happy','Hopeful','Hurt','Hysterical','Incredulous','Jealous','Lonely','Moody','Nauseated','Numb','Overwhelmed','Panicked','Proud','Rattled','Relieved','Sad','Scared','Stressed','Stuck','Surprised','Tired','Uneasy','Uncomfortable','Upset','Vulnerable')
+        fields = ( 'entry','userid', 'entryname', 'username', 'Angry','Ashamed','Betrayed','Bitter','Brain_Foggy','Confused','Content','Curious','Disappointed','Disgusted','Dissociated','Embarrassed','Excited','Focused','Frustrated','Grateful','Guilty','Happy','Hopeful','Hurt','Hysterical','Incredulous','Jealous','Lonely','Moody','Nauseated','Numb','Overwhelmed','Panicked','Proud','Rattled','Relieved','Sad','Scared','Stressed','Stuck','Surprised','Tired','Uneasy','Uncomfortable','Upset','Vulnerable')
+        
+class ReturnEntrySerializer2(serializers.ModelSerializer):
+    class Meta:
+        model = JournalEntry
+        fields = ('entry_id', 'entry','userid', 'entryname', 'username', 'Angry','Ashamed','Betrayed','Bitter','Brain_Foggy','Confused','Content','Curious','Disappointed','Disgusted','Dissociated','Embarrassed','Excited','Focused','Frustrated','Grateful','Guilty','Happy','Hopeful','Hurt','Hysterical','Incredulous','Jealous','Lonely','Moody','Nauseated','Numb','Overwhelmed','Panicked','Proud','Rattled','Relieved','Sad','Scared','Stressed','Stuck','Surprised','Tired','Uneasy','Uncomfortable','Upset','Vulnerable')
         # 'Angry','Ashamed','Betrayed','Bitter','Brain_Foggy','Confused','Content','Curious','Disappointed','Disgusted','Dissociated','Embarrassed','Excited','Focused','Frustrated','Grateful','Guilty','Happy','Hopeful','Hurt','Hysterical','Incredulous','Jealous','Lonely','Moody','Nauseated','Numb','Overwhelmed','Panicked','Proud','Rattled','Relieved','Sad','Scared','Stressed','Stuck','Surprised','Tired','Uneasy','Uncomfortable','Upset','Vulnerable'
  
 

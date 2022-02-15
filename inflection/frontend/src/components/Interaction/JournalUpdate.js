@@ -9,6 +9,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import JournalFields2 from "./JournalFields2";
 import JournalTagValue2 from "./JournalTagValue2";
 import BackToInteractionButton from "../Buttons/BackToInteractionButton";
+import DeleteEntryButton from "../Buttons/DeleteEntryButton";
 
 const JournalUpdate = ({
   setCurrentPage,
@@ -98,6 +99,7 @@ const JournalUpdate = ({
     Uncomfortable: reviewData.Uncomfortable,
     Upset: reviewData.Upset,
     Vulnerable: reviewData.Vulnerable,
+    deleteEntry: "Delete Entry",
     emotion1: emotionOutput[0][0],
     emotion2: emotionOutput[1][0],
     emotion3: emotionOutput[2][0],
@@ -341,242 +343,26 @@ const JournalUpdate = ({
         Upset: Number(formField.Upset),
         Vulnerable: Number(formField.Vulnerable),
         created_at: reviewData.created_at,
+        deleteEntry: formField.deleteEntry,
       }),
     };
     console.log(requestOptions);
     fetch("/api/entry/update", requestOptions).then((response) =>
-      response.json().then((data) => console.log(data))
+      response.json().then(setCurrentPage(4))
     );
   };
 
-  // const onValue1Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue1: event,
-  //   });
-  //   // onEmotionChange(formField.emotion1, formField.emotionvalue1);
-  // };
-  // const on2Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotion2: event,
-  //   });
-  // };
-  // const onValue2Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue2: event,
-  //   });
-  // };
-  // const on3Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotion3: event,
-  //   });
-  // };
-  // const onValue3Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue3: event,
-  //   });
-  // };
-  // const on4Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotion4: event,
-  //   });
-  // };
-
-  // const onValue4Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue4: event,
-  //   });
-  // };
-  // const on5Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotion5: event,
-  //   });
-  // };
-  // const onValue5Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue5: event,
-  //   });
-  // };
-  // const on6Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotion6: event,
-  //   });
-  // };
-  // const onValue6Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue6: event,
-  //   });
-  // };
-  // const on7Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotion7: event,
-  //   });
-  // };
-  // const onValue7Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue7: event,
-  //   });
-  // };
-  // const on8Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotion8: event,
-  //   });
-  // };
-  // const onValue8Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue8: event,
-  //   });
-  // };
-  // const on9Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotion9: event,
-  //   });
-  // };
-  // const onValue9Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue9: event,
-  //   });
-  // };
-  // const on10Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotion10: event,
-  //   });
-  // };
-  // const onValue10Change = (event) => {
-  //   setFormField({
-  //     ...formField,
-  //     emotionvalue10: event,
-  //   });
-  // };
-
-  // const mountDisplayEmotions = () => {
-
-  //   const Gronk = (key, keyValue) => {
-  //     return (
-  //       <div>
-  //         {key} ({keyValue})
-  //       </div>
-  //     );
-  //   };
-  // };
-  // };
-  // const valueChangeArray = [
-  //   formField.emotion1,
-  //   formField.emotion2,
-  //   formField.emotion3,
-  //   formField.emotion4,
-  //   formField.emotion5,
-  //   formField.emotion6,
-  //   formField.emotion7,
-  //   formField.emotion8,
-  //   formField.emotion9,
-  //   formField.emotion10,
-  // ];
-  // const emotionChangeArray = [
-  //   formField.emotionvalue1,
-  //   formField.emotionvalue2,
-  //   formField.emotionvalue3,
-  //   formField.emotionvalue4,
-  //   formField.emotionvalue5,
-  //   formField.emotionvalue6,
-  //   formField.emotionvalue7,
-  //   formField.emotionvalue8,
-  //   formField.emotionvalue9,
-  //   formField.emotionvalue10,
-  // ];
-
-  // let emotionCounter = 0;
-  // for (const key in reviewData) {
-  //   if (emotionlessKeys.includes(key) === false) {
-  //     if (reviewData[key] > 0) {
-  //       emotionOutput.push([key, reviewData[key]]);
-  //   ...emotionOutput,
-  //   [valueChangeArray[emotionCounter]]: reviewData[key],
-  //   [emotionChangeArray[emotionCounter]]: key,
-  //     }
-  //   }
-  // }
-
-  // console.log("oranges", emotionOutput);
-  // if (emotionOutput.length > 0) {
-  //   on1Change(emotionOutput[0][0]);
-  //   console.log("peach", emotionOutput[0][1]);
-  //   onValue1Change(emotionOutput[0][1]);
-  //   console.log("taco", emotionOutput[0][0]);
-  // }
-  // if (emotionOutput.length > 1) {
-  //   on2Change(emotionOutput[1][0]);
-  //   onValue3Change(emotionOutput[1][1]);
-  // }
-  // if (emotionOutput.length > 2) {
-  //   on3Change(emotionOutput[2][0]);
-  //   onValue3Change(emotionOutput[2][1]);
-  // }
-  // if (emotionOutput.length > 3) {
-  //   on4Change(emotionOutput[3][0]);
-  //   onValue4Change(emotionOutput[3][1]);
-  // }
-  // if (emotionOutput.length > 4) {
-  //   on5Change(emotionOutput[4][0]);
-  //   onValue5Change(emotionOutput[4][1]);
-  // }
-  // if (emotionOutput.length > 5) {
-  //   on6Change(emotionOutput[5][0]);
-  //   onValue6Change(emotionOutput[5][1]);
-  // }
-  // if (emotionOutput.length > 6) {
-  //   on7Change(emotionOutput[6][0]);
-  //   onValue7Change(emotionOutput[6][1]);
-  // }
-  // if (emotionOutput.length > 7) {
-  //   on8Change(emotionOutput[7][0]);
-  //   onValue8Change(emotionOutput[7][1]);
-  // }
-  // if (emotionOutput.length > 8) {
-  //   on9Change(emotionOutput[8][0]);
-  //   onValue9Change(emotionOutput[8][1]);
-  // }
-  // if (emotionOutput.length > 9) {
-  //   on10Change(emotionOutput[9][0]);
-  //   onValue10Change(emotionOutput[9][1]);
-  // }
-  // for (let i = 0; i < emotionOutput.length; i++) {
-  //   console.log("turtles", emotionOutput[i][0], emotionOutput[i][1]);
-
-  //   setFormField({
-  //     ...formField,
-  //     [emotionOutput[i][0]]: emotionOutput[i][1],
-  //   });
-  //   setFormField({ ...formField });
-
-  // [emotionOutput[1][0]]: emotionOutput[1][1],
-  // [emotionOutput[2][0]]: emotionOutput[2][1],
-  // [emotionOutput[3][0]]: emotionOutput[3][1],
-  // [emotionOutput[4][0]]: emotionOutput[4][1],
-  // [emotionOutput[5][0]]: emotionOutput[5][1],
-  // [emotionOutput[6][0]]: emotionOutput[6][1],
-  // [emotionOutput[7][0]]: emotionOutput[7][1],
-  // [emotionOutput[8][0]]: emotionOutput[8][1],
-  // [emotionOutput[9][0]]: emotionOutput[9][1],
-  // [emotionOutput[10][0]]: emotionOutput[10][1],
-
+  const onClickCallback = (event) => {
+    event.preventDefault();
+    if (formField.deleteEntry === "Delete Entry") {
+      setFormField({
+        ...formField,
+        deleteEntry: "DELETE",
+      });
+    } else {
+      onFormSubmit(event);
+    }
+  };
   // useEffect(() => {
   //   mountDisplayEmotions();
   // }, []);
@@ -690,44 +476,16 @@ const JournalUpdate = ({
             ]}
             // onEmotionChange={onEmotionChange}
           ></JournalFields2>
-          {/* <JournalTag
-            name="emotion1"
-            value={formField.emotion1}
-            onChange={onTag1Change}
-          />
-          <JournalTagValue
-            name="emotionvalue1"
-            value={formField.emotionvalue1}
-            onChange={onTagValue1Change}
-          />
-          <p></p>
 
-          <JournalTag
-            name="emotion2"
-            value={formField.emotion2}
-            onChange={onTag2Change}
-          />
-          <JournalTagValue
-            name="emotionvalue2"
-            value={formField.emotionvalue2}
-            onChange={onTagValue2Change}
-          />
-          <p></p>
-          <JournalTag
-            name="emotion3"
-            value={formField.emotion3}
-            onChange={onTag3Change}
-          />
-          <JournalTagValue
-            name="emotionvalue3"
-            value={formField.emotionvalue3}
-            onChange={onTagValue3Change}
-          /> */}
           <p>
             <Button variant="contained" type="submit" value="Submit Entry">
               Submit Entry
             </Button>
           </p>
+          <DeleteEntryButton
+            onClickCallback={onClickCallback}
+            text={formField.deleteEntry}
+          />
         </form>
       </div>
     </div>

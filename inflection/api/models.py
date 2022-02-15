@@ -5,15 +5,17 @@ from django.db import models
 import random
 
 
-def increment_inflection_user():
-    last_user = InflectionUser.objects.all().order_by('_id').last()
-    if not last_user:
-        return 10000 + random.randint(1,100)
-    return last_user._id + random.randint(1,100)
+
 
 
 
 class InflectionUser(models.Model):
+    def increment_inflection_user(self, *args, **kwargs):
+        last_user = InflectionUser.objects.all().order_by('_id').last()
+        if not last_user:
+            return 10000 + random.randint(1,100)
+        return int(last_user._id) + random.randint(1,100)    
+
     _id = models.AutoField(default=increment_inflection_user, primary_key=True, db_index=True, unique=True)
     username = models.CharField(max_length=20, unique=True)
     password = models.CharField(max_length=22)
@@ -23,13 +25,13 @@ class InflectionUser(models.Model):
 
 
 class JournalEntry(models.Model):
-    def increment_journal_entry():
+    def increment_journal_entry(self, *args, **kwargs):
         last_entry = JournalEntry.objects.all().order_by('entry_id').last()
         if not last_entry:
             return 100000 + random.randint(1,200)
-        return last_entry.entry_id + random.randint(1,200)   
+        return int(last_entry.entry_id) + random.randint(1,200)   
         
-    entry_id = models.IntegerField(primary_key=True)
+    entry_id = models.AutoField(primary_key=True, db_index=True, unique=True)
     # userid = models.ForeignKey(InflectionUser, on_delete=models.CASCADE)
     userid = models.IntegerField()
     entryname = models.CharField(max_length=20)

@@ -18,20 +18,20 @@ const JournalFields = ({
   const plusEmotion = () => {
     if (formFieldValues[addEmotion] && formFieldEmotions[addEmotion])
       SetAddEmotion(addEmotion + 1);
+    if (formFieldValues[0] == false && formFieldEmotions[0] == false)
+      SetAddEmotion(0);
   };
 
   useEffect(() => {
-    console.log(addEmotion);
-    console.log(formFieldValues[addEmotion]);
     plusEmotion();
   }, [formFieldEmotions, formFieldValues]);
 
   const emotionsComponents = [];
   for (let entryindex = 0; entryindex < 1 + addEmotion; entryindex++) {
-    console.log(formFieldValues[entryindex]);
     emotionsComponents.push(
-      <div>
+      <div key={entryindex - 10}>
         <JournalTag
+          key={entryindex}
           emotionnumber={entryindex}
           value={formFieldEmotions[entryindex]}
           // onChange={[`${`onTag`}${entryindex}${`Change`}`]}
@@ -39,33 +39,16 @@ const JournalFields = ({
           // onEmotionChange={onEmotionChange}
         />
         <JournalTagValue
+          key={entryindex + 12}
           name={`${"EmotionValue" + [entryindex]}`}
           value={formFieldValues[entryindex]}
           onChange={onTagValueChange[entryindex]}
           // onChange={`${`onTagValue`}${entryindex}${`Change`}`}
         />
       </div>
-      // <InteractionDisplay
-      //   key={displayEntries[entryindex]._id}
-      //   _id={displayEntries[entryindex]._id}
-      //   entry={displayEntries[entryindex].entry}
-      //   userid={displayEntries[entryindex].userid}
-      //   entryname={displayEntries[entryindex].entryname}
-      //   created_at={displayEntries[entryindex].created_at}
-      //   emotion1={displayEntries[entryindex].emotion1}
-      //   emotionvalue1={displayEntries[entryindex].emotionvalue1}
-      //   emotion2={displayEntries[entryindex].emotion2}
-      //   emotionvalue2={displayEntries[entryindex].emotionvalue2}
-      //   emotion3={displayEntries[entryindex].emotion3}
-      //   emotionvalue3={displayEntries[entryindex].emotionvalue3}
-      // />
     );
   }
 
-  // console.log(entriesComponents.length, displayEntries.length);
-  // if ((entriesComponents.length === displayEntries.length) != 0) {
-  //   console.log("line51", haveDisplay);
-  // }
   return emotionsComponents;
 };
 export default JournalFields;

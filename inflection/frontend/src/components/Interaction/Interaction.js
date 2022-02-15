@@ -19,7 +19,6 @@ const Interaction = ({
 }) => {
   const [displayEntries, setDisplayEntries] = useState("");
   const [haveDisplay, setHaveDisplay] = useState([]);
-  console.log("Interaction element rendered");
 
   const setPage = (newPage) => {
     setCurrentPage(1);
@@ -40,7 +39,6 @@ const Interaction = ({
         .then((response) => response.json())
         .then((data) => setDisplayEntries(data));
     }
-    console.log(displayEntries);
   };
   useEffect(() => {
     mountDisplayEntries();
@@ -48,18 +46,12 @@ const Interaction = ({
 
   const entriesComponents = [];
   if (displayEntries) {
-    console.log("line39", displayEntries[0]);
     if (haveDisplay.length == 0) {
-      console.log("line41", haveDisplay);
       for (
         let entryindex = 0;
         entryindex < displayEntries.length;
         entryindex++
       ) {
-        console.log(
-          "displayEntries[entryindex]",
-          displayEntries[entryindex]["entry"]
-        );
         entriesComponents.push(
           <InteractionDisplay
             key={displayEntries[entryindex]["entry_id"]}
@@ -69,11 +61,8 @@ const Interaction = ({
           />
         );
       }
-      console.log(entriesComponents.length, displayEntries.length);
     }
     if ((entriesComponents.length === displayEntries.length) != 0) {
-      console.log("line51", haveDisplay);
-
       setHaveDisplay(entriesComponents);
     }
   }

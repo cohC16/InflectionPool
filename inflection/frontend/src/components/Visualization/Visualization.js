@@ -8,6 +8,9 @@ import EmotionSelector from "./EmotionSelector";
 import Linegraph from "./Linegraph";
 import ToggleHide from "./ToggleHide";
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { ThemeProvider } from "@mui/material/styles";
 
 const Visualization = ({ setCurrentPage, username, _id }) => {
   const [formField, setFormField] = useState({
@@ -18,6 +21,10 @@ const Visualization = ({ setCurrentPage, username, _id }) => {
     emotion2: "",
     emotion3: "",
     emotion4: "",
+    emotion1toggle: true,
+    emotion2toggle: true,
+    emotion3toggle: true,
+    emotion4toggle: true,
   });
 
   const onEntryChange = (event) => {
@@ -53,32 +60,42 @@ const Visualization = ({ setCurrentPage, username, _id }) => {
       emotion4: event.target.value,
     });
   };
-  <RadioGroup row defaultValue="true">
-    <FormControlLabel
-      value="true"
-      control={<Radio color="primary" />}
-      label="Toggle Hide"
-      lablePlacement="bottom"
-    />
 
-    <FormControlLabel
-      value="true"
-      control={<Radio color="secondary" />}
-      label="Toggle Hide"
-      lablePlacement="bottom"
-    />
-  </RadioGroup>;
-  const setPage = (newPage) => {
-    setCurrentPage(1);
-  };
   return (
     <div>
-      Visualization component
-      <span>
-        <Grid container justifyContent="flex-end">
-          <BackButton setCurrentPage={setCurrentPage} />
+      <Grid container justifyContent="flex-end">
+        <BackButton setCurrentPage={setCurrentPage} />
+      </Grid>
+
+      <Box
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        style={{ minHeight: "3.5rem" }}
+      >
+        <Grid
+          bgcolor="#ffebee"
+          borderRadius={2}
+          paddingTop="1rem"
+          display="flex"
+          item
+          xs={12}
+        >
+          <Box style={{ minHeight: "2.5rem" }} fontFamily="Montserrat">
+               Your Story
+          </Box>
         </Grid>
-      </span>
+      </Box>
+
+      <Grid container justifyContent="flex-end">
+        <Grid
+          bgcolor="#ffebee"
+          borderRadius={2}
+          paddingTop="1rem"
+          display="flex"
+          item
+          xs={12}
+        ></Grid>
+      </Grid>
       <ul>
         <li>
           <SortByButton />

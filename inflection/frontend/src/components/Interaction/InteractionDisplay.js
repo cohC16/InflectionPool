@@ -20,7 +20,7 @@ const InteractionDisplay = ({
   const emotionOutput = [];
   const Gronk = (key, keyValue) => {
     return (
-      <div>
+      <div key={key}>
         {key} ({keyValue})
       </div>
     );
@@ -43,14 +43,14 @@ const InteractionDisplay = ({
       <p>
         <Button fullWidth variant="contained" onClick={setPage}>
           <Grid container spacing={2}>
-            <Grid item xs={1.5}>
+            <Grid key="albedo" item xs={1.5}>
               {entries.entry_id}
             </Grid>
-            <Grid item xs={5.5}>
+            <Grid key="fuego" item xs={5.5}>
               "{entries.entry}..."
               {/* Number( */}
             </Grid>
-            <Grid item xs={2}>
+            <Grid key="remulak" item xs={2}>
               {entries.created_at}
             </Grid>
             <Grid item xs={2.5}>

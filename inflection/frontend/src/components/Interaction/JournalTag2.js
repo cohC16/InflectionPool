@@ -7,7 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 const JournalTag2 = ({ name, value, onChange }) => {
   return (
     <span>
-      <FormControl sx={{ m: 0.6, minWidth: 200 }}>
+      <FormControl sx={{ m: 0.6, minWidth: 200 }} size="small">
         <InputLabel>Emotion</InputLabel>
         <Select
           value={value}
