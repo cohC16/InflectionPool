@@ -130,90 +130,96 @@ const CreateUser = ({
       </Box>
 
       <form className="" onSubmit={onFormSubmit}>
-        <p>
-          <label
-            style={{
-              fontFamily: "Montserrat",
-            }}
-          >
-            Username{" "}
-          </label>
-          <input
-            style={{
-              fontFamily: "Montserrat",
-            }}
-            name="Username"
-            required={true}
-            value={formField.username}
-            onChange={onUsernameChange}
-            maxLength={20}
-            // helperText="Username go brrr"
-          />
-        </p>
-        <p>
-          <label
-            style={{
-              fontFamily: "Montserrat",
-            }}
-          >
-            Password{" "}
-          </label>
-          <input
-            style={{
-              fontFamily: "Montserrat",
-            }}
-            type="password"
-            required={true}
-            name="Password"
-            value={formField.password}
-            onChange={onPasswordChange}
-            maxLength={22}
-            // helperText="Password go psssspsps"
-          />
-        </p>
-        <p>
-          <label
-            style={{
-              fontFamily: "Montserrat",
-            }}
-          >
-            Nickname{" "}
-          </label>
-          <input
-            style={{
-              fontFamily: "Montserrat",
-            }}
-            name="Nickname"
-            required={true}
-            value={formField.nickname}
-            onChange={onNicknameChange}
-            maxLength={20}
-            // helperText="Yeah, we're there."
-          />
-        </p>
-        <p>
-          <label
-            style={{
-              fontFamily: "Montserrat",
-            }}
-          >
-            Email{" "}
-          </label>
-          <input
-            style={{
-              fontFamily: "Montserrat",
-            }}
-            name="Email"
-            value={formField.email}
-            onChange={onEmailChange}
-            required={true}
-            maxLength={250}
-            // helperText="Real email for real human."
-          />
-        </p>
-        <Button variant="contained" type="submit">
-          Create Profile
-        </Button>
+        <Grid container xs={12} paddingTop="1.1rem">
+          <Grid xs={0.4} />
+          <Grid xs={11.6}>
+            <p>
+              <label
+                style={{
+                  fontFamily: "Montserrat",
+                }}
+              >
+                Username{" "}
+              </label>
+              <input
+                style={{
+                  fontFamily: "Montserrat",
+                }}
+                name="Username"
+                required={true}
+                value={formField.username}
+                onChange={onUsernameChange}
+                maxLength={20}
+                // helperText="Username go brrr"
+              />
+            </p>
+            <p>
+              <label
+                style={{
+                  fontFamily: "Montserrat",
+                }}
+              >
+                Password{" "}
+              </label>
+              <input
+                style={{
+                  fontFamily: "Montserrat",
+                }}
+                type="password"
+                required={true}
+                name="Password"
+                value={formField.password}
+                onChange={onPasswordChange}
+                maxLength={22}
+                // helperText="Password go psssspsps"
+              />
+            </p>
+            <p>
+              <label
+                style={{
+                  fontFamily: "Montserrat",
+                }}
+              >
+                Nickname{" "}
+              </label>
+              <input
+                style={{
+                  fontFamily: "Montserrat",
+                }}
+                name="Nickname"
+                required={true}
+                value={formField.nickname}
+                onChange={onNicknameChange}
+                maxLength={20}
+                // helperText="Yeah, we're there."
+              />
+            </p>
+            <p>
+              <label
+                style={{
+                  fontFamily: "Montserrat",
+                }}
+              >
+                Email{" "}
+              </label>
+              <input
+                style={{
+                  fontFamily: "Montserrat",
+                }}
+                name="Email"
+                value={formField.email}
+                onChange={onEmailChange}
+                required={true}
+                maxLength={250}
+                // helperText="Real email for real human."
+              />
+            </p>
+
+            <Button variant="contained" type="submit">
+              Create Profile
+            </Button>
+          </Grid>
+        </Grid>
       </form>
       <p>{errorMessage}</p>
     </div>

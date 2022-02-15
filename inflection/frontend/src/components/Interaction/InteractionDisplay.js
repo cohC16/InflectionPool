@@ -41,29 +41,30 @@ const InteractionDisplay = ({
   return (
     <ThemeProvider theme={ThemeOff}>
       <p>
-        <Button fullWidth variant="contained" onClick={setPage}>
-          <Grid container spacing={2}>
-            <Grid key="albedo" item xs={1.5}>
-              {entries.entry_id}
-            </Grid>
-            <Grid key="fuego" item xs={5.5}>
-              "{entries.entry}..."
-              {/* Number( */}
-            </Grid>
-            <Grid key="remulak" item xs={2}>
-              {entries.created_at}
-            </Grid>
-            <Grid item xs={2.5}>
-              {emotionOutput}
-              {/* {emotion1 ? ` ${emotion1}` : null}
+        <Grid Container paddingX=".5rem">
+          <Button fullWidth variant="contained" onClick={setPage}>
+            <Grid container spacing={2}>
+              <Grid key="albedo" item xs={1.5}>
+                {entries.entry_id}
+              </Grid>
+              <Grid key="fuego" item xs={5.5}>
+                "{entries.entry}..."
+                {/* Number( */}
+              </Grid>
+              <Grid key="remulak" item xs={2}>
+                {entries.created_at}
+              </Grid>
+              <Grid item xs={2.5}>
+                {emotionOutput}
+                {/* {emotion1 ? ` ${emotion1}` : null}
               {emotionvalue1 ? ` (${emotionvalue1})` : null}
               {emotion2 ? `; ${emotion2}` : null}
               {emotionvalue2 ? ` (${emotionvalue2})` : null}
               {emotion3 ? `; ${emotion3}` : null}
-              {emotionvalue3 ? ` (${emotionvalue3})` : null} */}
+            {emotionvalue3 ? ` (${emotionvalue3})` : null} */}
+              </Grid>
             </Grid>
-          </Grid>
-          {/* <h4>Entry Id - {_id}</h4>
+            {/* <h4>Entry Id - {_id}</h4>
         <p> Entry - "{entry.substr(0, 100)}..."; </p>
         <p> Created On - {created_at};</p>
         <p>
@@ -75,7 +76,8 @@ const InteractionDisplay = ({
         {emotion3 ? `; ${emotion3}` : null}
         {emotionvalue3 ? ` - (${emotionvalue3})` : null}
       </p> */}
-        </Button>
+          </Button>
+        </Grid>
       </p>
     </ThemeProvider>
   );

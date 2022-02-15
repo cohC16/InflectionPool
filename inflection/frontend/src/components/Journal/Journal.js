@@ -355,21 +355,26 @@ const Journal = ({ setCurrentPage, username, _id }) => {
       </Box>
 
       <form className="" onSubmit={onFormSubmit}>
-        <p>
-          <textarea
-            style={{
-              width: "95%",
-              height: "10rem",
-              fontFamily: "Montserrat",
-            }}
-            name="entry"
-            required={true}
-            value={formField.entry}
-            onChange={onEntryChange}
-            maxLength={3000}
-            placeholder="Today..."
-          />
-        </p>
+        <Grid container xs={12} paddingTop=".4rem">
+          <Grid xs={0.4} />
+          <Grid xs={11.6}>
+            <p>
+              <textarea
+                style={{
+                  width: "95%",
+                  height: "10rem",
+                  fontFamily: "Montserrat",
+                }}
+                name="entry"
+                required={true}
+                value={formField.entry}
+                onChange={onEntryChange}
+                maxLength={3000}
+                placeholder="Today..."
+              />
+            </p>
+          </Grid>
+        </Grid>
 
         <Box
           key="your empty"
@@ -394,62 +399,67 @@ const Journal = ({ setCurrentPage, username, _id }) => {
             </Box>
           </Grid>
         </Box>
-        <JournalFields
-          formFieldEmotions={[
-            formField.emotion1,
-            formField.emotion2,
-            formField.emotion3,
-            formField.emotion4,
-            formField.emotion5,
-            formField.emotion6,
-            formField.emotion7,
-            formField.emotion8,
-            formField.emotion9,
-            formField.emotion10,
-          ]}
-          formFieldValues={[
-            formField.emotionvalue1,
-            formField.emotionvalue2,
-            formField.emotionvalue3,
-            formField.emotionvalue4,
-            formField.emotionvalue5,
-            formField.emotionvalue6,
-            formField.emotionvalue7,
-            formField.emotionvalue8,
-            formField.emotionvalue9,
-            formField.emotionvalue10,
-          ]}
-          onTagValueChange={[
-            onTagValue1Change,
-            onTagValue2Change,
-            onTagValue3Change,
-            onTagValue4Change,
-            onTagValue5Change,
-            onTagValue6Change,
-            onTagValue7Change,
-            onTagValue8Change,
-            onTagValue9Change,
-            onTagValue10Change,
-          ]}
-          onTagChange={[
-            onTag1Change,
-            onTag2Change,
-            onTag3Change,
-            onTag4Change,
-            onTag5Change,
-            onTag6Change,
-            onTag7Change,
-            onTag8Change,
-            onTag9Change,
-            onTag10Change,
-          ]}
-          // onEmotionChange={onEmotionChange}
-        ></JournalFields>
-        <p>
-          <Button variant="contained" type="submit" value="Submit Entry">
-            Submit Entry
-          </Button>
-        </p>
+        <Grid container xs={12} paddingTop=".4rem">
+          <Grid xs={0.4} />
+          <Grid xs={11.6}>
+            <JournalFields
+              formFieldEmotions={[
+                formField.emotion1,
+                formField.emotion2,
+                formField.emotion3,
+                formField.emotion4,
+                formField.emotion5,
+                formField.emotion6,
+                formField.emotion7,
+                formField.emotion8,
+                formField.emotion9,
+                formField.emotion10,
+              ]}
+              formFieldValues={[
+                formField.emotionvalue1,
+                formField.emotionvalue2,
+                formField.emotionvalue3,
+                formField.emotionvalue4,
+                formField.emotionvalue5,
+                formField.emotionvalue6,
+                formField.emotionvalue7,
+                formField.emotionvalue8,
+                formField.emotionvalue9,
+                formField.emotionvalue10,
+              ]}
+              onTagValueChange={[
+                onTagValue1Change,
+                onTagValue2Change,
+                onTagValue3Change,
+                onTagValue4Change,
+                onTagValue5Change,
+                onTagValue6Change,
+                onTagValue7Change,
+                onTagValue8Change,
+                onTagValue9Change,
+                onTagValue10Change,
+              ]}
+              onTagChange={[
+                onTag1Change,
+                onTag2Change,
+                onTag3Change,
+                onTag4Change,
+                onTag5Change,
+                onTag6Change,
+                onTag7Change,
+                onTag8Change,
+                onTag9Change,
+                onTag10Change,
+              ]}
+              // onEmotionChange={onEmotionChange}
+            ></JournalFields>
+            <p>
+              <Button variant="contained" type="submit" value="Submit Entry">
+                Submit Entry
+              </Button>
+            </p>
+          </Grid>
+        </Grid>
       </form>
     </div>
   );

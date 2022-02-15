@@ -45,12 +45,17 @@ const Home = ({ setCurrentPage, username, _id, nickname }) => {
           </Box>
         </Grid>
       </Box>
-      <JournalButton setCurrentPage={setCurrentPage} />
-      <p></p>
-      <InteractionButton setCurrentPage={setCurrentPage} />
-      <p></p>
-      <VisualizationButton setCurrentPage={setCurrentPage} />
-      <p></p>
+      <Grid container xs={12}>
+        <Grid xs={0.6} />
+        <Grid xs={11.4}>
+          <JournalButton setCurrentPage={setCurrentPage} />
+          <p></p>
+          <InteractionButton setCurrentPage={setCurrentPage} />
+          <p></p>
+          <VisualizationButton setCurrentPage={setCurrentPage} />
+          <p></p>
+        </Grid>
+      </Grid>
     </div>
   );
 };

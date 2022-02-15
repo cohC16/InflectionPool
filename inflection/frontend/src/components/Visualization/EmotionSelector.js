@@ -10,6 +10,7 @@ const EmotionSelector = ({ emotionNumber, value, onChange }) => {
           onChange={onChange}
           name="emotion1"
           required={false}
+          size="small"
         >
           <option value=""></option>
           <option value="Angry">Angry</option>

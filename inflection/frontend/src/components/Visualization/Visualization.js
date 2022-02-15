@@ -86,8 +86,9 @@ const Visualization = ({ setCurrentPage, username, _id }) => {
         </Grid>
       </Box>
 
-      <Grid container justifyContent="flex-end">
+      <Grid container justifyContent="flex-end" columnSpacing={2}>
         <Grid
+          spacing={2}
           bgcolor="#ffebee"
           borderRadius={2}
           paddingTop="1rem"
@@ -96,52 +97,63 @@ const Visualization = ({ setCurrentPage, username, _id }) => {
           xs={12}
         ></Grid>
       </Grid>
-      <ul>
-        <li>
-          <SortByButton />
-        </li>
-        <li>
-          <DurationButton />
-        </li>
 
-        <Linegraph />
+      <SortByButton />
 
-        <li>
+      <DurationButton />
+
+      <Linegraph />
+      <Grid
+        container
+        justifyContent="center"
+        bgcolor=""
+        borderRadius={2}
+        paddingTop="1rem"
+        display="flex"
+        item
+        xs={12}
+      >
+        <Grid xs={0.6} />
+        <Grid xs={5} alignContent="center" bgcolor="#" paddingBottom=".6rem">
           <EmotionContainer
             emotionNumber={1}
             name="emotion1"
             value={formField.emotion1}
             onChange={onTag1Change}
           />
-        </li>
-        <li>
+        </Grid>
+        <Grid xs={1} />
+        <Grid xs={5} justifyContent="center" paddingBottom=".6rem">
           <EmotionContainer
+            justifyContent="center"
             emotionNumber={2}
             name="emotion2"
             value={formField.emotion2}
             onChange={onTag2Change}
           />
-        </li>
-        <li>
+        </Grid>
+        <Grid xs={0.6} />
+        <Grid xs={5} justifyContent="center">
           <EmotionContainer
+            justifyContent="center"
             emotionNumber={3}
             name="emotion3"
             value={formField.emotion3}
             onChange={onTag3Change}
           />
-        </li>
-        <li>
+        </Grid>
+        <Grid xs={1} />
+        <Grid xs={5} justifyContent="center">
           <EmotionContainer
+            justifyContent="center"
             emotionNumber={4}
             name="emotion4"
             value={formField.emotion4}
             onChange={onTag4Change}
           />
-        </li>
-        <li>
-          <HomeButton setCurrentPage={setCurrentPage} />
-        </li>
-      </ul>
+        </Grid>
+      </Grid>
+      <HomeButton setCurrentPage={setCurrentPage} />
     </div>
   );
 };

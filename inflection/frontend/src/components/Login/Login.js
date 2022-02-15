@@ -103,43 +103,52 @@ const Login = ({
       </Box>
       <Box fontFamily="Montserrat">
         <form className="" onSubmit={onFormSubmit}>
-          <p>
-            <label>Username - </label>
-            <input
-              style={{
-                fontFamily: "Montserrat",
-              }}
-              name="Username"
-              required={true}
-              maxLength={20}
-              value={formField.username}
-              onChange={onUsernameChange}
-              placeholder="Username"
-            />{" "}
-          </p>
-          <p>
-            <label>Password - </label>
-            <input
-              type="password"
-              name="Password"
-              value={formField.password}
-              onChange={onPasswordChange}
-              required={true}
-              maxLength={22}
-              placeholder="Password"
-            />
-          </p>
-          <p>{errorMessage}</p>
-          <Button variant="contained" type="submit" value="Login">
-            Login
-          </Button>
+          <Grid container xs={12} paddingTop=".4rem">
+            <Grid xs={0.4} />
+            <Grid xs={11.6}>
+              <p>
+                <label>Username - </label>
+                <input
+                  style={{
+                    fontFamily: "Montserrat",
+                  }}
+                  name="Username"
+                  required={true}
+                  maxLength={20}
+                  value={formField.username}
+                  onChange={onUsernameChange}
+                  placeholder="Username"
+                />{" "}
+              </p>
+              <p>
+                <label>Password - </label>
+                <input
+                  type="password"
+                  name="Password"
+                  value={formField.password}
+                  onChange={onPasswordChange}
+                  required={true}
+                  maxLength={22}
+                  placeholder="Password"
+                />
+              </p>
+              <p>{errorMessage}</p>
+
+              <Button variant="contained" type="submit" value="Login">
+                Login
+              </Button>
+            </Grid>
+          </Grid>
         </form>
       </Box>
-      <p>
-        <Button variant="contained" onClick={setPage2}>
-          Create User
-        </Button>
-      </p>
+      <Grid container xs={12} paddingTop="1.1rem">
+        <Grid xs={0.4} />
+        <Grid xs={11.6}>
+          <Button variant="contained" onClick={setPage2}>
+            Create User
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 };

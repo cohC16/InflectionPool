@@ -32,7 +32,7 @@ const JournalFields = ({
       <div key={entryindex - 10}>
         <JournalTag
           key={entryindex}
-          emotionnumber={entryindex}
+          emotionNumber={entryindex + 1}
           value={formFieldEmotions[entryindex]}
           // onChange={[`${`onTag`}${entryindex}${`Change`}`]}
           onChange={onTagChange[entryindex]}

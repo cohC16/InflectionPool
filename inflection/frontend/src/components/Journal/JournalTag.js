@@ -4,11 +4,11 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 
-const JournalTag = ({ name, value, onChange }) => {
+const JournalTag = ({ name, value, onChange, emotionNumber }) => {
   return (
     <span>
       <FormControl key={name} sx={{ m: 0.6, minWidth: 200 }} size="small">
-        <InputLabel>Emotion</InputLabel>
+        <InputLabel>Emotion {emotionNumber}</InputLabel>
         <Select
           value={value}
           onChange={onChange}

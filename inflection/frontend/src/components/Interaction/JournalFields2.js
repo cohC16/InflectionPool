@@ -34,7 +34,7 @@ const JournalFields2 = ({
     emotionsComponents.push(
       <div>
         <JournalTag2
-          emotionnumber={entryindex}
+          emotionnumber={entryindex + 1}
           value={formFieldEmotions[entryindex]}
           // onChange={[`${`onTag`}${entryindex}${`Change`}`]}
           onChange={onTagChange[entryindex]}
