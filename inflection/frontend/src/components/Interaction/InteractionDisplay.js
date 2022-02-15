@@ -4,9 +4,13 @@ import Grid from "@mui/material/Grid";
 import ThemeOff from "../ThemeOff";
 import { ThemeProvider } from "@mui/material/styles";
 
-const InteractionDisplay = ({ entries }) => {
+const InteractionDisplay = ({
+  setCurrentPage,
+  entries,
+  UpdatedJournalReview,
+}) => {
   const emotionlessKeys = [
-    "_id",
+    "entry_id",
     "userid",
     "entryname",
     "entry",
@@ -25,19 +29,22 @@ const InteractionDisplay = ({ entries }) => {
   for (const key in entries) {
     if (emotionlessKeys.includes(key) === false) {
       if (entries[key] > 0) {
-        console.log(entries[key]);
         emotionOutput.push(Gronk(key, entries[key]));
       }
     }
   }
-  console.log(emotionOutput);
+
+  const setPage = (newPage) => {
+    UpdatedJournalReview(entries);
+    setCurrentPage(6);
+  };
   return (
     <ThemeProvider theme={ThemeOff}>
       <p>
-        <Button fullWidth variant="contained">
+        <Button fullWidth variant="contained" onClick={setPage}>
           <Grid container spacing={2}>
             <Grid item xs={1.5}>
-              {entries._id}
+              {entries.entry_id}
             </Grid>
             <Grid item xs={5.5}>
               "{entries.entry}..."

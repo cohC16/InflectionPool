@@ -9,7 +9,14 @@ import { ThemeProvider } from "@mui/material/styles";
 
 // import { ContactSupportOutlined } from "@material-ui/icons";
 
-const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
+const Interaction = ({
+  setCurrentPage,
+  username,
+  nickname,
+  email,
+  _id,
+  UpdatedJournalReview,
+}) => {
   const [displayEntries, setDisplayEntries] = useState("");
   const [haveDisplay, setHaveDisplay] = useState([]);
   console.log("Interaction element rendered");
@@ -54,7 +61,12 @@ const Interaction = ({ setCurrentPage, username, nickname, email, _id }) => {
           displayEntries[entryindex]["entry"]
         );
         entriesComponents.push(
-          <InteractionDisplay entries={displayEntries[entryindex]} />
+          <InteractionDisplay
+            key={displayEntries[entryindex]["entry_id"]}
+            setCurrentPage={setCurrentPage}
+            entries={displayEntries[entryindex]}
+            UpdatedJournalReview={UpdatedJournalReview}
+          />
         );
       }
       console.log(entriesComponents.length, displayEntries.length);

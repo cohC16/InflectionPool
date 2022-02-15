@@ -11,11 +11,7 @@ def increment_inflection_user():
         return 10000 + random.randint(1,100)
     return last_user._id + random.randint(1,100)
 
-def increment_journal_entry():
-    last_entry = JournalEntry.objects.all().order_by('_id').last()
-    if not last_entry:
-        return 100000 + random.randint(1,200)
-    return last_entry._id + random.randint(1,200)
+
 
 class InflectionUser(models.Model):
     _id = models.AutoField(default=increment_inflection_user, primary_key=True, db_index=True, unique=True)
@@ -27,7 +23,13 @@ class InflectionUser(models.Model):
 
 
 class JournalEntry(models.Model):
-    _id = models.AutoField(default=increment_journal_entry, primary_key=True, db_index=True, unique=True)
+    def increment_journal_entry():
+        last_entry = JournalEntry.objects.all().order_by('entry_id').last()
+        if not last_entry:
+            return 100000 + random.randint(1,200)
+        return last_entry.entry_id + random.randint(1,200)   
+        
+    entry_id = models.IntegerField(primary_key=True)
     # userid = models.ForeignKey(InflectionUser, on_delete=models.CASCADE)
     userid = models.IntegerField()
     entryname = models.CharField(max_length=20)

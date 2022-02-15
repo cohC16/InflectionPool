@@ -1,13 +1,136 @@
 from os import stat
-from .serializers import EntrySerializer, EntryViewbyUserSerializer, InflectionUserSerializer, CreateUserSerializer, CreateEntrySerializer, ReturnEntrySerializer, UserLookupSerializer
-from .models import InflectionUser, JournalEntry
+from .serializers import  EntryByIDSerializer, EntrySerializer, EntryViewbyUserSerializer, InflectionUserSerializer, CreateUserSerializer, CreateEntrySerializer, ReturnEntrySerializer, UpdateEntrySerializer, UserLookupSerializer
+from .models import InflectionUser
+from .models import JournalEntry
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework.request import Request
 
+class UpdateEntryView(APIView):
+    serializer_class = UpdateEntrySerializer
+    def post(self, request, format=None):
+        from .models import JournalEntry    
+        # if not self.request.session.exists(self.request.session.session_key):
+        #     self.request.session.create()
+        #  '_id', 'userid', 'entryname', 'username', 'created_at', 'emotion1', 'emotionvalue1', 'emotion2', 'emotionvalue2', 'emotion3', 'emotionvalue3'
+        entryid="entry_id"
+        serializer =  self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            entry_id = request.data[entryid]
+            userid = serializer.data.get('userid')
+            entry = serializer.data.get('entry')
+            entryname = serializer.data.get('entryname')
+            username = serializer.data.get('username')
+            created_at =serializer.data.get('created_at')
+            Angry=request.data["Angry"]
+            Ashamed=request.data["Ashamed"]
+            Betrayed=request.data["Betrayed"]
+            Bitter=request.data["Bitter"]
+            Brain_Foggy=request.data["Brain_Foggy"]
+            Confused=request.data["Confused"]
+            Content=request.data["Content"]
+            Curious=request.data["Curious"]
+            Disappointed=request.data["Disappointed"]
+            Disgusted=request.data["Disgusted"]
+            Dissociated=request.data["Dissociated"]
+            Embarrassed=request.data["Embarrassed"]
+            Excited=request.data["Excited"]
+            Focused=request.data["Focused"]
+            Frustrated=request.data["Frustrated"]
+            Grateful=request.data["Grateful"]
+            Guilty=request.data["Guilty"]
+            Happy=request.data["Happy"]
+            Hopeful=request.data["Hopeful"]
+            Hurt=request.data["Hurt"]
+            Hysterical=request.data["Hysterical"]
+            Incredulous=request.data["Incredulous"]
+            Jealous=request.data["Jealous"]
+            Lonely=request.data["Lonely"]
+            Moody=request.data["Moody"]
+            Nauseated=request.data["Nauseated"]
+            Numb=request.data["Numb"]
+            Overwhelmed=request.data["Overwhelmed"]
+            Panicked=request.data["Panicked"]
+            Proud=request.data["Proud"]
+            Rattled=request.data["Rattled"]
+            Relieved=request.data["Relieved"]
+            Sad=request.data["Sad"]
+            Scared=request.data["Scared"]
+            Stressed=request.data["Stressed"]
+            Stuck=request.data["Stuck"]
+            Surprised=request.data["Surprised"]
+            Tired=request.data["Tired"]
+            Uneasy=request.data["Uneasy"]
+            Uncomfortable=request.data["Uncomfortable"]
+            Upset=request.data["Upset"]
+            Vulnerable=request.data["Vulnerable"]
+            queryset = JournalEntry.objects.get(entry_id=entry_id)
+            queryset.entryname=entryname
+            queryset.entry=entry
+            queryset.Angry=Angry
+            queryset.Ashamed=Ashamed
+            queryset.Betrayed=Betrayed
+            queryset.Bitter=Bitter
+            queryset.Brain_Foggy=Brain_Foggy
+            queryset.Confused=Confused
+            queryset.Content=Content
+            queryset.Curious=Curious
+            queryset.Disappointed=Disappointed
+            queryset.Disgusted=Disgusted
+            queryset.Dissociated=Dissociated
+            queryset.Embarrassed=Embarrassed
+            queryset.Excited=Excited
+            queryset.Focused=Focused
+            queryset.Frustrated=Frustrated
+            queryset.Grateful=Grateful
+            queryset.Guilty=Guilty
+            queryset.Happy=Happy
+            queryset.Hopeful=Hopeful
+            queryset.Hurt=Hurt
+            queryset.Hysterical=Hysterical
+            queryset.Incredulous=Incredulous
+            queryset.Jealous=Jealous
+            queryset.Lonely=Lonely
+            queryset.Moody=Moody
+            queryset.Nauseated=Nauseated
+            queryset.Numb=Numb
+            queryset.Overwhelmed=Overwhelmed
+            queryset.Panicked=Panicked
+            queryset.Proud=Proud
+            queryset.Rattled=Rattled
+            queryset.Relieved=Relieved
+            queryset.Sad=Sad
+            queryset.Scared=Scared
+            queryset.Stressed=Stressed
+            queryset.Stuck=Stuck
+            queryset.Surprised=Surprised
+            queryset.Tired=Tired
+            queryset.Uneasy=Uneasy
+            queryset.Uncomfortable=Uncomfortable
+            queryset.Upset=Upset
+            queryset.Vulnerable=Vulnerable
+            queryset.save()
+            return (Response(ReturnEntrySerializer(JournalEntry).data, status=status.HTTP_201_CREATED))
+        # else:
+        #     return (Response({"Message":"No Username exists."}, status=status.HTTP_400_BAD_REQUEST))
+                
 
+        return (Response({"Message":"Invalid serializer" +entry_id+ str([request.data])}, status=status.HTTP_400_BAD_REQUEST))
+
+ 
+
+
+
+
+class ViewEntryByID(APIView):
+    serializer_class = EntryByIDSerializer
+    lookup_url_kwarg = 'id'
+    def get(self, request, format=None):
+        id = request.GET.get(self.lookup_url_kwarg)
+        entry = JournalEntry.objects.filter(id = id)
+ 
 
 class InflectionUserView(generics.ListAPIView):
     queryset = InflectionUser.objects.all()
@@ -69,7 +192,7 @@ class CreateEntryView(APIView):
         #  '_id', 'userid', 'entryname', 'username', 'created_at', 'emotion1', 'emotionvalue1', 'emotion2', 'emotionvalue2', 'emotion3', 'emotionvalue3'
         serializer =  self.serializer_class(data=request.data)
         if serializer.is_valid():
-            _id = serializer.data.get('_id')
+            entry_id = serializer.data.get('entry_id')
             userid = serializer.data.get('userid')
             entry = serializer.data.get('entry')
             entryname = serializer.data.get('entryname')
@@ -123,13 +246,15 @@ class CreateEntryView(APIView):
             #     if queryset.userid != userid:
             #         return (Response({"Message":"User does not exists"}, status=status.HTTP_400_BAD_REQUEST))
             # else:
-            JournalEntry = JournalEntry(userid=userid, entryname=entryname, entry=entry, username=username, Angry=Angry, Ashamed=Ashamed,Betrayed=Betrayed,Bitter=Bitter,Brain_Foggy=Brain_Foggy,Confused=Confused,Content=Content,Curious=Curious,Disappointed=Disappointed,Disgusted=Disgusted,Dissociated=Dissociated,Embarrassed=Embarrassed,Excited=Excited,Focused=Focused,Frustrated=Frustrated,Grateful=Grateful,Guilty=Guilty,Happy=Happy,Hopeful=Hopeful,Hurt=Hurt,Hysterical=Hysterical,Incredulous=Incredulous,Jealous=Jealous,Lonely=Lonely,Moody=Moody,Nauseated=Nauseated,Numb=Numb,Overwhelmed=Overwhelmed,Panicked=Panicked,Proud=Proud,Rattled=Rattled,Relieved=Relieved,Sad=Sad,Scared=Scared,Stressed=Stressed,Stuck=Stuck,Surprised=Surprised,Tired=Tired,Uneasy=Uneasy,Uncomfortable=Uncomfortable,Upset=Upset,Vulnerable=Vulnerable)
+            entry_id = JournalEntry.increment_journal_entry()
+
+            JournalEntry = JournalEntry(entry_id=entry_id, userid=userid, entryname=entryname, entry=entry, username=username, Angry=Angry, Ashamed=Ashamed,Betrayed=Betrayed,Bitter=Bitter,Brain_Foggy=Brain_Foggy,Confused=Confused,Content=Content,Curious=Curious,Disappointed=Disappointed,Disgusted=Disgusted,Dissociated=Dissociated,Embarrassed=Embarrassed,Excited=Excited,Focused=Focused,Frustrated=Frustrated,Grateful=Grateful,Guilty=Guilty,Happy=Happy,Hopeful=Hopeful,Hurt=Hurt,Hysterical=Hysterical,Incredulous=Incredulous,Jealous=Jealous,Lonely=Lonely,Moody=Moody,Nauseated=Nauseated,Numb=Numb,Overwhelmed=Overwhelmed,Panicked=Panicked,Proud=Proud,Rattled=Rattled,Relieved=Relieved,Sad=Sad,Scared=Scared,Stressed=Stressed,Stuck=Stuck,Surprised=Surprised,Tired=Tired,Uneasy=Uneasy,Uncomfortable=Uncomfortable,Upset=Upset,Vulnerable=Vulnerable)
             JournalEntry.save()
             return (Response(ReturnEntrySerializer(JournalEntry).data, status=status.HTTP_201_CREATED))
 
-        return (Response({"Message":"Invalid serializer"}, status=status.HTTP_400_BAD_REQUEST))
+        return (Response({"Message":"Invalid serializer" + [self.data]}, status=status.HTTP_400_BAD_REQUEST))
 
- 
+
 class CreateInflectionUserView(APIView):
     serializer_class = CreateUserSerializer
     def post(self, request, format=None):
@@ -157,7 +282,7 @@ class CreateInflectionUserView(APIView):
                 inflectionUser.save()
                 return (Response(InflectionUserSerializer(inflectionUser).data, status=status.HTTP_201_CREATED))
 
-        return (Response({"Message":"Invalid serializer"}, status=status.HTTP_400_BAD_REQUEST))
+        return (Response({"Message":"Invalid serializer" + [self.data]}, status=status.HTTP_400_BAD_REQUEST))
 
 # class CreateEntryView(APIView):
     

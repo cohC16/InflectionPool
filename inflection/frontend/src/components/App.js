@@ -7,6 +7,7 @@ import Interaction from "./Interaction/Interaction";
 import Visualization from "./Visualization/Visualization";
 import CreateUser from "./CreateUser/CreateUser";
 import Theme from "./Theme";
+import JournalUpdate from "./Interaction/JournalUpdate";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
   const [userpass, setUserpass] = useState("");
   const [email, setEmail] = useState("");
   const [nickname, setNickname] = useState("");
+  const [journalReview, UpdatedJournalReview] = useState({});
 
   const pageComponents = [
     <div>
@@ -64,6 +66,7 @@ const App = () => {
         nickname={nickname}
         email={email}
         _id={_id}
+        UpdatedJournalReview={UpdatedJournalReview}
       />
     </div>,
     <div>
@@ -71,6 +74,17 @@ const App = () => {
         setCurrentPage={setCurrentPage}
         username={username}
         _id={_id}
+      />
+    </div>,
+    <div>
+      <JournalUpdate
+        setCurrentPage={setCurrentPage}
+        username={username}
+        nickname={nickname}
+        email={email}
+        _id={_id}
+        UpdatedJournalReview={UpdatedJournalReview}
+        reviewData={journalReview}
       />
     </div>,
   ];
