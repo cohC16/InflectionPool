@@ -5,7 +5,6 @@ const EmotionSelector = ({ emotionNumber, value, onChange }) => {
   return (
     <span>
       <label>
-        {}
         <select
           value={value}
           onChange={onChange}

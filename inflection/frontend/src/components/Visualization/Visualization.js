@@ -53,7 +53,21 @@ const Visualization = ({ setCurrentPage, username, _id }) => {
       emotion4: event.target.value,
     });
   };
+  <RadioGroup row defaultValue="true">
+    <FormControlLabel
+      value="true"
+      control={<Radio color="primary" />}
+      label="Toggle Hide"
+      lablePlacement="bottom"
+    />
 
+    <FormControlLabel
+      value="true"
+      control={<Radio color="secondary" />}
+      label="Toggle Hide"
+      lablePlacement="bottom"
+    />
+  </RadioGroup>;
   const setPage = (newPage) => {
     setCurrentPage(1);
   };
