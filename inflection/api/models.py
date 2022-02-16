@@ -37,7 +37,7 @@ class JournalEntry(models.Model):
     entryname = models.CharField(max_length=20)
     entry = models.TextField()
     username = models.CharField(max_length=20)
-    created_at = models.DateField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     Angry = models.IntegerField(blank=True,null=True)
     Ashamed = models.IntegerField(blank=True,null=True)
     Betrayed = models.IntegerField(blank=True,null=True)

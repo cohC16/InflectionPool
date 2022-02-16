@@ -45,9 +45,9 @@ const Home = ({ setCurrentPage, username, _id, nickname }) => {
           </Box>
         </Grid>
       </Box>
-      <Grid container xs={12}>
-        <Grid xs={0.6} />
-        <Grid xs={11.4}>
+      <Grid container>
+        <Grid item xs={0.6} />
+        <Grid item xs={11.4}>
           <JournalButton setCurrentPage={setCurrentPage} />
           <p></p>
           <InteractionButton setCurrentPage={setCurrentPage} />

@@ -33,6 +33,7 @@ const InteractionDisplay = ({
       }
     }
   }
+  const displayDateTime = entries.created_at.split("T");
 
   const setPage = (newPage) => {
     UpdatedJournalReview(entries);
@@ -52,30 +53,13 @@ const InteractionDisplay = ({
                 {/* Number( */}
               </Grid>
               <Grid key="remulak" item xs={2}>
-                {entries.created_at}
+                {displayDateTime[0]}{" "}
+                {displayDateTime[1].substr(0, displayDateTime[1].length - 1)}
               </Grid>
               <Grid item xs={2.5}>
                 {emotionOutput}
-                {/* {emotion1 ? ` ${emotion1}` : null}
-              {emotionvalue1 ? ` (${emotionvalue1})` : null}
-              {emotion2 ? `; ${emotion2}` : null}
-              {emotionvalue2 ? ` (${emotionvalue2})` : null}
-              {emotion3 ? `; ${emotion3}` : null}
-            {emotionvalue3 ? ` (${emotionvalue3})` : null} */}
               </Grid>
             </Grid>
-            {/* <h4>Entry Id - {_id}</h4>
-        <p> Entry - "{entry.substr(0, 100)}..."; </p>
-        <p> Created On - {created_at};</p>
-        <p>
-        {emotion1 ? `Emotions Tagged - ` : null}
-        {emotion1 ? ` ${emotion1}` : null}
-        {emotionvalue1 ? ` - (${emotionvalue1})` : null}
-        {emotion2 ? `; ${emotion2}` : null}
-        {emotionvalue2 ? ` - (${emotionvalue2})` : null}
-        {emotion3 ? `; ${emotion3}` : null}
-        {emotionvalue3 ? ` - (${emotionvalue3})` : null}
-      </p> */}
           </Button>
         </Grid>
       </p>

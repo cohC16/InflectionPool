@@ -89,6 +89,7 @@ const Login = ({
     <div>
       <Box paddingTop="1rem" style={{ minHeight: "3.5rem" }}>
         <Grid
+          item
           bgcolor="#ffebee"
           borderRadius={2}
           paddingTop="1rem"
@@ -103,9 +104,9 @@ const Login = ({
       </Box>
       <Box fontFamily="Montserrat">
         <form className="" onSubmit={onFormSubmit}>
-          <Grid container xs={12} paddingTop=".4rem">
-            <Grid xs={0.4} />
-            <Grid xs={11.6}>
+          <Grid container paddingTop=".4rem">
+            <Grid item xs={0.4} />
+            <Grid item xs={11.6}>
               <p>
                 <label>Username - </label>
                 <input
@@ -141,9 +142,9 @@ const Login = ({
           </Grid>
         </form>
       </Box>
-      <Grid container xs={12} paddingTop="1.1rem">
-        <Grid xs={0.4} />
-        <Grid xs={11.6}>
+      <Grid container paddingTop="1.1rem">
+        <Grid item xs={0.4} />
+        <Grid item xs={11.6}>
           <Button variant="contained" onClick={setPage2}>
             Create User
           </Button>

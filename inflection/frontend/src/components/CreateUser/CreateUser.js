@@ -139,7 +139,7 @@ const CreateUser = ({
                   fontFamily: "Montserrat",
                 }}
               >
-                Username{" "}
+                Username -{" "}
               </label>
               <input
                 style={{
@@ -159,7 +159,7 @@ const CreateUser = ({
                   fontFamily: "Montserrat",
                 }}
               >
-                Password{" "}
+                Password -{" "}
               </label>
               <input
                 style={{
@@ -180,7 +180,7 @@ const CreateUser = ({
                   fontFamily: "Montserrat",
                 }}
               >
-                Nickname{" "}
+                Nickname -{" "}
               </label>
               <input
                 style={{
@@ -200,7 +200,7 @@ const CreateUser = ({
                   fontFamily: "Montserrat",
                 }}
               >
-                Email{" "}
+                Email -{" "}
               </label>
               <input
                 style={{
