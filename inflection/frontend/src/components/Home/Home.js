@@ -56,6 +56,7 @@ const Home = ({ setCurrentPage, username, _id, nickname }) => {
           <p></p>
         </Grid>
       </Grid>
+      <Grid container height={280}></Grid>
     </div>
   );
 };

@@ -41,28 +41,26 @@ const InteractionDisplay = ({
   };
   return (
     <ThemeProvider theme={ThemeOff}>
-      <p>
-        <Grid Container paddingX=".5rem">
-          <Button fullWidth variant="contained" onClick={setPage}>
-            <Grid container spacing={2}>
-              <Grid key="albedo" item xs={1.5}>
-                {entries.entry_id}
-              </Grid>
-              <Grid key="fuego" item xs={5.5}>
-                "{entries.entry}..."
-                {/* Number( */}
-              </Grid>
-              <Grid key="remulak" item xs={2}>
-                {displayDateTime[0]}{" "}
-                {displayDateTime[1].substr(0, displayDateTime[1].length - 1)}
-              </Grid>
-              <Grid item xs={2.5}>
-                {emotionOutput}
-              </Grid>
+      <Grid Container padding=".5rem">
+        <Button fullWidth variant="contained" onClick={setPage}>
+          <Grid container spacing={2}>
+            <Grid key="albedo" item xs={1.5}>
+              {entries.entry_id}
             </Grid>
-          </Button>
-        </Grid>
-      </p>
+            <Grid key="fuego" item xs={5.5}>
+              "{entries.entry}..."
+              {/* Number( */}
+            </Grid>
+            <Grid key="remulak" item xs={2}>
+              {displayDateTime[0]}{" "}
+              {displayDateTime[1].substr(0, displayDateTime[1].length - 1)}
+            </Grid>
+            <Grid item xs={2.5}>
+              {emotionOutput}
+            </Grid>
+          </Grid>
+        </Button>
+      </Grid>
     </ThemeProvider>
   );
 };

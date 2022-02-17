@@ -14,7 +14,7 @@ const EmotionContainer = ({ emotionNumber, value, onChange, onToggle }) => {
         Emotion {emotionNumber.toString()}
       </Typography> */}
       <JournalTag
-        backgroundColor="#552277"
+        backgroundColor="brown"
         emotionNumber={emotionNumber}
         value={value}
         onChange={onChange}

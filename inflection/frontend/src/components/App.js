@@ -95,9 +95,16 @@ const App = () => {
     </div>,
   ];
   return (
-    <ThemeProvider key="roulettedisplay" theme={Theme}>
-      {pageComponents[currentPage]}
-    </ThemeProvider>
+    <div
+      style={{
+        margin: 0,
+        backgroundColor: "#fcf4fa",
+      }}
+    >
+      <ThemeProvider key="roulettedisplay" theme={Theme}>
+        {pageComponents[currentPage]}
+      </ThemeProvider>
+    </div>
   );
   // <div>
   //   <h1>App.js component</h1>

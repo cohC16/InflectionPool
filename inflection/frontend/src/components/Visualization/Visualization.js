@@ -141,7 +141,7 @@ const Visualization = ({ setCurrentPage, username, _id }) => {
       </Grid>
 
       <Box
-        paddingTop="0rem"
+        paddingTop="1rem"
         paddingBottom="0rem"
         style={{ minHeight: "3.5rem" }}
       >
@@ -173,11 +173,6 @@ const Visualization = ({ setCurrentPage, username, _id }) => {
           xs={12}
         ></Grid>
       </Grid>
-      {/* 
-      <SortByButton />
-
-      <DurationButton /> */}
-
       <Grid
         container
         justifyContent="center"
@@ -245,7 +240,7 @@ const Visualization = ({ setCurrentPage, username, _id }) => {
           />
         </Grid>
       </Grid>
-      {/* <HomeButton setCurrentPage={setCurrentPage} /> */}
+      <Grid container height={40}></Grid>
     </div>
   );
 };

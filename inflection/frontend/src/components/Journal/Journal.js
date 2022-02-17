@@ -354,10 +354,10 @@ const Journal = ({ setCurrentPage, username, _id }) => {
         </Grid>
       </Box>
 
-      <form className="" onSubmit={onFormSubmit}>
-        <Grid container xs={12} paddingTop=".4rem">
-          <Grid xs={0.4} />
-          <Grid xs={11.6}>
+      <form onSubmit={onFormSubmit}>
+        <Grid container paddingTop=".4rem">
+          <Grid item xs={0.4} />
+          <Grid item xs={11.6}>
             <p>
               <textarea
                 style={{
@@ -399,9 +399,9 @@ const Journal = ({ setCurrentPage, username, _id }) => {
             </Box>
           </Grid>
         </Box>
-        <Grid container xs={12} paddingTop=".4rem">
-          <Grid xs={0.4} />
-          <Grid xs={11.6}>
+        <Grid container paddingTop=".4rem">
+          <Grid item xs={0.4} />
+          <Grid item xs={11.6}>
             <JournalFields
               formFieldEmotions={[
                 formField.emotion1,
@@ -461,6 +461,7 @@ const Journal = ({ setCurrentPage, username, _id }) => {
           </Grid>
         </Grid>
       </form>
+      <Grid container height={60}></Grid>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
 
-// import "./linegraph.css";
 import {
   LineChart,
   ResponsiveContainer,
@@ -13,6 +12,7 @@ import {
   Label,
 } from "recharts";
 import Typography from "@mui/material/Typography";
+
 function Linegraph({
   graphData,
   emotion1,
@@ -120,6 +120,7 @@ function Linegraph({
     if (toggle1 == true) {
       lineOutput.push(
         <Line
+          key="line1"
           strokeWidth={2}
           connectNulls
           type="monotone"
@@ -133,6 +134,7 @@ function Linegraph({
     if (toggle2) {
       lineOutput.push(
         <Line
+          key="line2"
           strokeWidth={2}
           connectNulls
           type="monotone"
@@ -146,6 +148,7 @@ function Linegraph({
     if (toggle3) {
       lineOutput.push(
         <Line
+          key="line3"
           strokeWidth={2}
           connectNulls
           type="monotone"
@@ -159,6 +162,7 @@ function Linegraph({
     if (toggle4) {
       lineOutput.push(
         <Line
+          key="line4"
           strokeWidth={2}
           connectNulls
           type="monotone"

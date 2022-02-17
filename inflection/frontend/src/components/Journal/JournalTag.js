@@ -5,7 +5,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 
 const JournalTag = ({ name, value, onChange, emotionNumber }) => {
-  console.log("JournalTag", value);
   return (
     <span>
       <FormControl key={name} sx={{ m: 0.6, minWidth: 200 }} size="small">

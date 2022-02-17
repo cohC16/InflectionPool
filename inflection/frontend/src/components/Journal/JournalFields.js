@@ -16,7 +16,11 @@ const JournalFields = ({
   const [addEmotion, SetAddEmotion] = useState(0);
 
   const plusEmotion = () => {
-    if (formFieldValues[addEmotion] && formFieldEmotions[addEmotion])
+    if (
+      formFieldValues[addEmotion] &&
+      formFieldEmotions[addEmotion] &&
+      addEmotion < 9
+    )
       SetAddEmotion(addEmotion + 1);
     if (formFieldValues[0] == false && formFieldEmotions[0] == false)
       SetAddEmotion(0);

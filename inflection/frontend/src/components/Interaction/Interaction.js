@@ -83,7 +83,7 @@ const Interaction = ({
           fullWidth
           style={{ minHeight: "3.5rem" }}
         >
-          <Grid paddingLeft={3} container spacing={2}>
+          <Grid container paddingLeft={3} spacing={2}>
             <Grid display="flex" justifyContent="center" item xs={1.5}>
               <Box fontFamily="Montserrat">ENTRY ID</Box>
             </Grid>

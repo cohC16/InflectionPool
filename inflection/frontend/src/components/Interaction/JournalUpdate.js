@@ -346,7 +346,6 @@ const JournalUpdate = ({
         deleteEntry: formField.deleteEntry,
       }),
     };
-    console.log(requestOptions);
     fetch("/api/entry/update", requestOptions).then((response) =>
       response.json().then(setCurrentPage(4))
     );
@@ -389,7 +388,7 @@ const JournalUpdate = ({
           </Grid>
         </Box>
 
-        <form className="" onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit}>
           <p>
             <textarea
               style={{
