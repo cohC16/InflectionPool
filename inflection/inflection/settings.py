@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
     'rest_framework',
-    'Inflection.apps.FrontendConfig'
+    'inflection.apps.FrontendConfig'
 ]
 
 MIDDLEWARE = [
